@@ -1,0 +1,805 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MeshMagic3D</class>
+ <widget class="QMainWindow" name="MeshMagic3D">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>754</width>
+    <height>497</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Mesh Magic 3D</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="MeshMagic3DResources.qrc">
+    <normaloff>:/images/iconMesh.ico</normaloff>:/images/iconMesh.ico</iconset>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <layout class="QVBoxLayout" name="mainLayout">
+      <item>
+       <widget class="QVTKWidget" name="qvtkWidget" native="true">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QToolBar" name="standardTool">
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="windowTitle">
+    <string>Standard Tools</string>
+   </property>
+   <property name="autoFillBackground">
+    <bool>false</bool>
+   </property>
+   <property name="movable">
+    <bool>true</bool>
+   </property>
+   <property name="floatable">
+    <bool>true</bool>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="actionOpen"/>
+   <addaction name="actionSave"/>
+   <addaction name="actionClose"/>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>754</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <addaction name="actionOpen"/>
+    <addaction name="actionClose"/>
+    <addaction name="actionSave"/>
+    <addaction name="actionSaveAs"/>
+    <addaction name="separator"/>
+    <addaction name="actionExit"/>
+   </widget>
+   <widget class="QMenu" name="menuEdit">
+    <property name="title">
+     <string>Edit</string>
+    </property>
+    <widget class="QMenu" name="menuAddObject">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <property name="title">
+      <string>Add Object</string>
+     </property>
+     <addaction name="actionAddCube"/>
+     <addaction name="actionAddSphere"/>
+     <addaction name="actionAddIcosahedron"/>
+     <addaction name="actionAddTorus"/>
+    </widget>
+    <addaction name="actionAddShader"/>
+    <addaction name="actionAddLight"/>
+    <addaction name="actionAddMaterial"/>
+    <addaction name="separator"/>
+    <addaction name="actionColor"/>
+    <addaction name="actionShowZones"/>
+    <addaction name="actionDelaunay3D"/>
+    <addaction name="separator"/>
+    <addaction name="menuAddObject"/>
+    <addaction name="separator"/>
+    <addaction name="actionDeleteCell"/>
+   </widget>
+   <widget class="QMenu" name="menuView">
+    <property name="title">
+     <string>View</string>
+    </property>
+    <widget class="QMenu" name="menuSelect">
+     <property name="title">
+      <string>Select</string>
+     </property>
+     <addaction name="actionSelectObject"/>
+     <addaction name="actionSelectCell"/>
+     <addaction name="actionSelectCellNeighbors"/>
+     <addaction name="actionSelectTriangle"/>
+     <addaction name="actionSelectLine"/>
+     <addaction name="actionSelectPoint"/>
+     <addaction name="actionSelectPointNeighbors"/>
+    </widget>
+    <widget class="QMenu" name="menuShowModelAs">
+     <property name="title">
+      <string>Show Model As</string>
+     </property>
+     <addaction name="actionSolid"/>
+     <addaction name="actionWireFrame"/>
+     <addaction name="actionOutline"/>
+     <addaction name="actionEdges"/>
+     <addaction name="actionPolygon"/>
+     <addaction name="actionPoints"/>
+    </widget>
+    <addaction name="menuSelect"/>
+    <addaction name="separator"/>
+    <addaction name="menuShowModelAs"/>
+    <addaction name="separator"/>
+    <addaction name="actionResetView"/>
+    <addaction name="actionShowAxesCenter"/>
+    <addaction name="actionResetCenter"/>
+    <addaction name="actionFullscreen"/>
+   </widget>
+   <widget class="QMenu" name="menuHelp">
+    <property name="title">
+     <string>Help</string>
+    </property>
+    <addaction name="actionHelpContent"/>
+    <addaction name="separator"/>
+    <addaction name="actionAbout"/>
+   </widget>
+   <widget class="QMenu" name="menuTool">
+    <property name="title">
+     <string>Tools</string>
+    </property>
+    <addaction name="actionAnaglyph"/>
+    <addaction name="separator"/>
+    <addaction name="actionScreenshot"/>
+   </widget>
+   <addaction name="menuFile"/>
+   <addaction name="menuEdit"/>
+   <addaction name="menuView"/>
+   <addaction name="menuTool"/>
+   <addaction name="menuHelp"/>
+  </widget>
+  <widget class="QToolBar" name="editTool">
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="windowTitle">
+    <string>Edit Tools</string>
+   </property>
+   <property name="floatable">
+    <bool>true</bool>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="actionAddShader"/>
+   <addaction name="actionAddLight"/>
+   <addaction name="actionAddMaterial"/>
+   <addaction name="separator"/>
+   <addaction name="actionColor"/>
+   <addaction name="actionShowZones"/>
+   <addaction name="actionDelaunay3D"/>
+   <addaction name="separator"/>
+   <addaction name="actionDeleteCell"/>
+  </widget>
+  <widget class="QToolBar" name="viewTool">
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="windowTitle">
+    <string>View Tools</string>
+   </property>
+   <property name="movable">
+    <bool>true</bool>
+   </property>
+   <property name="floatable">
+    <bool>true</bool>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="actionSolid"/>
+   <addaction name="actionWireFrame"/>
+   <addaction name="actionOutline"/>
+   <addaction name="actionEdges"/>
+   <addaction name="actionPolygon"/>
+   <addaction name="actionPoints"/>
+   <addaction name="separator"/>
+   <addaction name="actionResetView"/>
+   <addaction name="actionShowAxesCenter"/>
+   <addaction name="actionResetCenter"/>
+  </widget>
+  <widget class="QToolBar" name="extraTool">
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="windowTitle">
+    <string>Extra Tools</string>
+   </property>
+   <property name="floatable">
+    <bool>true</bool>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="actionAnaglyph"/>
+   <addaction name="actionScreenshot"/>
+  </widget>
+  <action name="actionOpen">
+   <property name="icon">
+    <iconset resource="MeshMagic3DResources.qrc">
+     <normaloff>:/images/open.png</normaloff>:/images/open.png</iconset>
+   </property>
+   <property name="text">
+    <string>Open File...</string>
+   </property>
+   <property name="toolTip">
+    <string>Open a file (Ctrl+O)</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+O</string>
+   </property>
+  </action>
+  <action name="actionSave">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="MeshMagic3DResources.qrc">
+     <normaloff>:/images/save.png</normaloff>:/images/save.png</iconset>
+   </property>
+   <property name="text">
+    <string>Save File...</string>
+   </property>
+   <property name="toolTip">
+    <string>Save a file (Ctrl+S)</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+S</string>
+   </property>
+  </action>
+  <action name="actionExit">
+   <property name="icon">
+    <iconset resource="MeshMagic3DResources.qrc">
+     <normaloff>:/images/quit.png</normaloff>:/images/quit.png</iconset>
+   </property>
+   <property name="text">
+    <string>Exit</string>
+   </property>
+   <property name="shortcut">
+    <string>Alt+F4</string>
+   </property>
+  </action>
+  <action name="actionSaveAs">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="MeshMagic3DResources.qrc">
+     <normaloff>:/images/save.png</normaloff>:/images/save.png</iconset>
+   </property>
+   <property name="text">
+    <string>Save As...</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+S</string>
+   </property>
+  </action>
+  <action name="actionAddLight">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="MeshMagic3DResources.qrc">
+     <normaloff>:/images/light.png</normaloff>:/images/light.png</iconset>
+   </property>
+   <property name="text">
+    <string>Add Light...</string>
+   </property>
+   <property name="toolTip">
+    <string>Add light to model (Ctrl+I)</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+I</string>
+   </property>
+  </action>
+  <action name="actionAddShader">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="MeshMagic3DResources.qrc">
+     <normaloff>:/images/shadow.png</normaloff>:/images/shadow.png</iconset>
+   </property>
+   <property name="text">
+    <string>Add Shader...</string>
+   </property>
+   <property name="toolTip">
+    <string>Add shader to model (Ctrl+H)</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+H</string>
+   </property>
+  </action>
+  <action name="actionAddMaterial">
+   <property name="icon">
+    <iconset resource="MeshMagic3DResources.qrc">
+     <normaloff>:/images/material.png</normaloff>:/images/material.png</iconset>
+   </property>
+   <property name="text">
+    <string>Add Texture...</string>
+   </property>
+   <property name="toolTip">
+    <string>Add texture to model (Ctrl+M)</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+M</string>
+   </property>
+  </action>
+  <action name="actionClose">
+   <property name="icon">
+    <iconset resource="MeshMagic3DResources.qrc">
+     <normaloff>:/images/close.png</normaloff>:/images/close.png</iconset>
+   </property>
+   <property name="text">
+    <string>Close File...</string>
+   </property>
+   <property name="toolTip">
+    <string>Close a file (Ctrl+F4)</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+F4</string>
+   </property>
+  </action>
+  <action name="actionSolid">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="MeshMagic3DResources.qrc">
+     <normaloff>:/images/solid.png</normaloff>:/images/solid.png</iconset>
+   </property>
+   <property name="text">
+    <string>Solid</string>
+   </property>
+   <property name="toolTip">
+    <string>Show model as a solid (Ctrl+L)</string>
+   </property>
+   <property name="shortcut">
+    <string>S</string>
+   </property>
+  </action>
+  <action name="actionWireFrame">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="MeshMagic3DResources.qrc">
+     <normaloff>:/images/wireframe.png</normaloff>:/images/wireframe.png</iconset>
+   </property>
+   <property name="text">
+    <string>Wire Frame</string>
+   </property>
+   <property name="toolTip">
+    <string>Show model as a wire frame (Ctrl+W)</string>
+   </property>
+   <property name="shortcut">
+    <string>W</string>
+   </property>
+  </action>
+  <action name="actionSelectObject">
+   <property name="icon">
+    <iconset resource="MeshMagic3DResources.qrc">
+     <normaloff>:/images/selectobject.png</normaloff>:/images/selectobject.png</iconset>
+   </property>
+   <property name="text">
+    <string>Select Object</string>
+   </property>
+   <property name="toolTip">
+    <string>Select an object</string>
+   </property>
+  </action>
+  <action name="actionSelectCell">
+   <property name="icon">
+    <iconset resource="MeshMagic3DResources.qrc">
+     <normaloff>:/images/selectcell.png</normaloff>:/images/selectcell.png</iconset>
+   </property>
+   <property name="text">
+    <string>Select Cells</string>
+   </property>
+   <property name="toolTip">
+    <string>Select cells</string>
+   </property>
+  </action>
+  <action name="actionSelectTriangle">
+   <property name="icon">
+    <iconset resource="MeshMagic3DResources.qrc">
+     <normaloff>:/images/selecttriangle.png</normaloff>:/images/selecttriangle.png</iconset>
+   </property>
+   <property name="text">
+    <string>Select Triangle</string>
+   </property>
+   <property name="toolTip">
+    <string>Select a triangle</string>
+   </property>
+  </action>
+  <action name="actionSelectLine">
+   <property name="icon">
+    <iconset resource="MeshMagic3DResources.qrc">
+     <normaloff>:/images/selectline.png</normaloff>:/images/selectline.png</iconset>
+   </property>
+   <property name="text">
+    <string>Select Line</string>
+   </property>
+   <property name="toolTip">
+    <string>Select a line</string>
+   </property>
+   <property name="visible">
+    <bool>true</bool>
+   </property>
+  </action>
+  <action name="actionSelectPoint">
+   <property name="icon">
+    <iconset resource="MeshMagic3DResources.qrc">
+     <normaloff>:/images/selectpoint.png</normaloff>:/images/selectpoint.png</iconset>
+   </property>
+   <property name="text">
+    <string>Select Points</string>
+   </property>
+   <property name="toolTip">
+    <string>Select points</string>
+   </property>
+  </action>
+  <action name="actionAddCube">
+   <property name="icon">
+    <iconset resource="MeshMagic3DResources.qrc">
+     <normaloff>:/images/cube.png</normaloff>:/images/cube.png</iconset>
+   </property>
+   <property name="text">
+    <string>Add Cube</string>
+   </property>
+   <property name="toolTip">
+    <string>Add a simple Cube</string>
+   </property>
+   <property name="visible">
+    <bool>true</bool>
+   </property>
+  </action>
+  <action name="actionAddSphere">
+   <property name="icon">
+    <iconset resource="MeshMagic3DResources.qrc">
+     <normaloff>:/images/sphere.png</normaloff>:/images/sphere.png</iconset>
+   </property>
+   <property name="text">
+    <string>Add Sphere</string>
+   </property>
+   <property name="toolTip">
+    <string>Add a simple Sphere</string>
+   </property>
+   <property name="visible">
+    <bool>true</bool>
+   </property>
+  </action>
+  <action name="actionAddIcosahedron">
+   <property name="icon">
+    <iconset resource="MeshMagic3DResources.qrc">
+     <normaloff>:/images/icosahedron.png</normaloff>:/images/icosahedron.png</iconset>
+   </property>
+   <property name="text">
+    <string>Add Icosahedron</string>
+   </property>
+   <property name="toolTip">
+    <string>Add a 20 sided polygon</string>
+   </property>
+   <property name="visible">
+    <bool>true</bool>
+   </property>
+  </action>
+  <action name="actionAddTorus">
+   <property name="icon">
+    <iconset resource="MeshMagic3DResources.qrc">
+     <normaloff>:/images/torus.png</normaloff>:/images/torus.png</iconset>
+   </property>
+   <property name="text">
+    <string>Add Torus</string>
+   </property>
+   <property name="toolTip">
+    <string>Add a simple Torus</string>
+   </property>
+   <property name="visible">
+    <bool>true</bool>
+   </property>
+  </action>
+  <action name="actionPoints">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="MeshMagic3DResources.qrc">
+     <normaloff>:/images/point.png</normaloff>:/images/point.png</iconset>
+   </property>
+   <property name="text">
+    <string>Points</string>
+   </property>
+   <property name="toolTip">
+    <string>Show model as points</string>
+   </property>
+  </action>
+  <action name="actionOutline">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="MeshMagic3DResources.qrc">
+     <normaloff>:/images/outline.png</normaloff>:/images/outline.png</iconset>
+   </property>
+   <property name="text">
+    <string>Outline</string>
+   </property>
+   <property name="toolTip">
+    <string>Show model as outline</string>
+   </property>
+  </action>
+  <action name="actionEdges">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="MeshMagic3DResources.qrc">
+     <normaloff>:/images/edges.png</normaloff>:/images/edges.png</iconset>
+   </property>
+   <property name="text">
+    <string>Edges</string>
+   </property>
+   <property name="toolTip">
+    <string>Show model as edges</string>
+   </property>
+  </action>
+  <action name="actionResetCenter">
+   <property name="icon">
+    <iconset resource="MeshMagic3DResources.qrc">
+     <normaloff>:/images/resetcenter.png</normaloff>:/images/resetcenter.png</iconset>
+   </property>
+   <property name="text">
+    <string>Reset Center</string>
+   </property>
+   <property name="toolTip">
+    <string>Reset camera in center viewport</string>
+   </property>
+  </action>
+  <action name="actionPolygon">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="MeshMagic3DResources.qrc">
+     <normaloff>:/images/polygon.png</normaloff>:/images/polygon.png</iconset>
+   </property>
+   <property name="text">
+    <string>Polygon</string>
+   </property>
+   <property name="toolTip">
+    <string>Show model as polygon</string>
+   </property>
+  </action>
+  <action name="actionShowAxesCenter">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="MeshMagic3DResources.qrc">
+     <normaloff>:/images/centeraxes.png</normaloff>:/images/centeraxes.png</iconset>
+   </property>
+   <property name="text">
+    <string>Show Axes Center</string>
+   </property>
+   <property name="toolTip">
+    <string>Show axes center</string>
+   </property>
+  </action>
+  <action name="actionAbout">
+   <property name="icon">
+    <iconset resource="MeshMagic3DResources.qrc">
+     <normaloff>:/images/about.png</normaloff>:/images/about.png</iconset>
+   </property>
+   <property name="text">
+    <string>About Mesh Magic 3D</string>
+   </property>
+   <property name="toolTip">
+    <string>About Mesh Magic 3D</string>
+   </property>
+  </action>
+  <action name="actionColor">
+   <property name="icon">
+    <iconset resource="MeshMagic3DResources.qrc">
+     <normaloff>:/images/color.png</normaloff>:/images/color.png</iconset>
+   </property>
+   <property name="text">
+    <string>Color</string>
+   </property>
+   <property name="toolTip">
+    <string>Change color</string>
+   </property>
+  </action>
+  <action name="actionShowZones">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="MeshMagic3DResources.qrc">
+     <normaloff>:/images/zone.png</normaloff>:/images/zone.png</iconset>
+   </property>
+   <property name="text">
+    <string>Show Zones</string>
+   </property>
+   <property name="toolTip">
+    <string>Show model with all zones</string>
+   </property>
+  </action>
+  <action name="actionDelaunay3D">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="MeshMagic3DResources.qrc">
+     <normaloff>:/images/generate.png</normaloff>:/images/generate.png</iconset>
+   </property>
+   <property name="text">
+    <string>Generate Color</string>
+   </property>
+   <property name="toolTip">
+    <string>Generate color a mesh by height</string>
+   </property>
+  </action>
+  <action name="actionSelectPointNeighbors">
+   <property name="icon">
+    <iconset resource="MeshMagic3DResources.qrc">
+     <normaloff>:/images/selectpoint.png</normaloff>:/images/selectpoint.png</iconset>
+   </property>
+   <property name="text">
+    <string>Select Point With Neighbors</string>
+   </property>
+   <property name="toolTip">
+    <string>Select a point with it's neighbors</string>
+   </property>
+  </action>
+  <action name="actionSelectCellNeighbors">
+   <property name="icon">
+    <iconset resource="MeshMagic3DResources.qrc">
+     <normaloff>:/images/selectcell.png</normaloff>:/images/selectcell.png</iconset>
+   </property>
+   <property name="text">
+    <string>Select Cell With Neighbors</string>
+   </property>
+   <property name="toolTip">
+    <string>Select a cell with it's neighbors</string>
+   </property>
+  </action>
+  <action name="actionDeleteCell">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="MeshMagic3DResources.qrc">
+     <normaloff>:/images/deletecell.png</normaloff>:/images/deletecell.png</iconset>
+   </property>
+   <property name="text">
+    <string>Delete Cell</string>
+   </property>
+   <property name="toolTip">
+    <string>Remove a cell from the mesh</string>
+   </property>
+   <property name="shortcut">
+    <string>Shift+Del</string>
+   </property>
+  </action>
+  <action name="actionAnaglyph">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="MeshMagic3DResources.qrc">
+     <normaloff>:/images/anaglyph3d.png</normaloff>:/images/anaglyph3d.png</iconset>
+   </property>
+   <property name="text">
+    <string>Anaglyph</string>
+   </property>
+   <property name="toolTip">
+    <string>Rendering with Anaglyph Stereo (Red-Blue)</string>
+   </property>
+  </action>
+  <action name="actionScreenshot">
+   <property name="icon">
+    <iconset resource="MeshMagic3DResources.qrc">
+     <normaloff>:/images/snapshot.png</normaloff>:/images/snapshot.png</iconset>
+   </property>
+   <property name="text">
+    <string>Screenshot</string>
+   </property>
+   <property name="toolTip">
+    <string>Save the window to a image file</string>
+   </property>
+  </action>
+  <action name="actionFullscreen">
+   <property name="icon">
+    <iconset resource="MeshMagic3DResources.qrc">
+     <normaloff>:/images/fullscreen.png</normaloff>:/images/fullscreen.png</iconset>
+   </property>
+   <property name="text">
+    <string>Fullscreen</string>
+   </property>
+   <property name="shortcut">
+    <string>F11</string>
+   </property>
+  </action>
+  <action name="actionResetView">
+   <property name="icon">
+    <iconset resource="MeshMagic3DResources.qrc">
+     <normaloff>:/images/rotate.png</normaloff>:/images/rotate.png</iconset>
+   </property>
+   <property name="text">
+    <string>Reset View</string>
+   </property>
+   <property name="toolTip">
+    <string>Reset direction of viewport</string>
+   </property>
+  </action>
+  <action name="actionHelpContent">
+   <property name="icon">
+    <iconset resource="MeshMagic3DResources.qrc">
+     <normaloff>:/images/help.png</normaloff>:/images/help.png</iconset>
+   </property>
+   <property name="text">
+    <string>Help Contents</string>
+   </property>
+   <property name="toolTip">
+    <string>Show the help pages</string>
+   </property>
+   <property name="shortcut">
+    <string>F1</string>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>QVTKWidget</class>
+   <extends>QWidget</extends>
+   <header location="global">QVTKWidget.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources>
+  <include location="MeshMagic3DResources.qrc"/>
+ </resources>
+ <connections/>
+</ui>
