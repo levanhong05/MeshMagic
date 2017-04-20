@@ -10,24 +10,24 @@
 ** All rights reserved.
 ********************************************************************************/
 
-#include "MeshMagic3D.h"
-#include "AboutMeshMagic.h"
-#include "ConfigureWriter.h"
-#include "ui_MeshMagic3D.h"
+#include "meshmagic3d.h"
+#include "about.h"
+#include "configurewriter.h"
+#include "ui_meshmagic3d.h"
 
-#include "Branding.h"
-#include "GlobalVariable.h"
+#include "branding.h"
+#include "globalvariable.h"
 
 //User-interaction
-#include "InteractorStyleDeleteCell.h"
-#include "KeyInteractorExtractRegions.h"
-#include "MouseInteractorHighLightCell.h"
-#include "MouseInteractorHighLightLine.h"
-#include "MouseInteractorHighLightActor.h"
-#include "MouseInteractorHighLightPoint.h"
-#include "MouseInteractorHighLightTriangle.h"
-#include "MouseInteractorHighLightCellNeighbors.h"
-#include "MouseInteractorHighLightPointNeighbors.h"
+#include "interactor/interactorstyledeletecell.h"
+#include "interactor/keyinteractorextractregions.h"
+#include "interactor/mouseinteractorhighlightcell.h"
+#include "interactor/mouseinteractorhighlightline.h"
+#include "interactor/mouseinteractorhighlightactor.h"
+#include "interactor/mouseinteractorhighlightpoint.h"
+#include "interactor/mouseinteractorhighlighttriangle.h"
+#include "interactor/mouseinteractorhighlightcellneighbors.h"
+#include "interactor/mouseinteractorhighlightpointneighbors.h"
 
 #include <math.h>
 
@@ -74,12 +74,16 @@
 //Read/Write Library
 #include <vtkSTLReader.h>
 #include <vtkSTLWriter.h>
+
 #include <vtkPNGReader.h>
 #include <vtkPNGWriter.h>
+
 #include <vtkJPEGWriter.h>
 #include <vtkJPEGReader.h>
+
 #include <vtkImageReader.h>
 #include <vtkImageWriter.h>
+
 #include <vtkImageReader2Factory.h>
 
 //Object Source Library
@@ -270,8 +274,8 @@ void MeshMagic3D::createConnerAnnotation()
     cornerAnnotation->SetLinearFontScaleFactor(2);
     cornerAnnotation->SetNonlinearFontScaleFactor(1);
     cornerAnnotation->SetMaximumFontSize(10);
-    cornerAnnotation->SetText(3, tr("Version ").toAscii() + QString(APP_VERSION_SHORT).toAscii());
-    cornerAnnotation->SetText(2, tr("Mesh Magic 3D").toAscii());
+    cornerAnnotation->SetText(3, tr("Version ").toUtf8() + QString(APP_VERSION_SHORT).toUtf8());
+    cornerAnnotation->SetText(2, tr("Mesh Magic 3D").toUtf8());
     cornerAnnotation->GetTextProperty()->SetColor(1,1,1);
     renderer->AddViewProp(cornerAnnotation);
 
@@ -723,7 +727,7 @@ void MeshMagic3D::slotAddShadow()
         planeActor->GetProperty()->SetColor(1.0,1.0,1.0);
         lstLightActors.push_back(planeActor);
 
-        renderer->SetPass(cameraP);
+        //renderer->SetPass(cameraP);
         renderer->AddViewProp(planeActor);
 
         // Spotlights.
@@ -1091,7 +1095,7 @@ void MeshMagic3D::slotShowOutline()
             translation->Translate(lstActors[i]->GetCenter()[0], lstActors[i]->GetCenter()[1], lstActors[i]->GetCenter()[2]);
 
             vtkSmartPointer<vtkTransformPolyDataFilter> transformFilter = vtkSmartPointer<vtkTransformPolyDataFilter>::New();
-            transformFilter->SetInputConnection(input->GetProducerPort());
+            transformFilter->SetInputData(input);
             transformFilter->SetTransform(translation);
             transformFilter->Update();
 
@@ -1149,7 +1153,7 @@ void MeshMagic3D::slotShowEdges()
             translation->Translate(lstActors[i]->GetCenter()[0], lstActors[i]->GetCenter()[1], lstActors[i]->GetCenter()[2]);
 
             vtkSmartPointer<vtkTransformPolyDataFilter> transformFilter = vtkSmartPointer<vtkTransformPolyDataFilter>::New();
-            transformFilter->SetInputConnection(input->GetProducerPort());
+            transformFilter->SetInputData(input);
             transformFilter->SetTransform(translation);
             transformFilter->Update();
 
@@ -1209,7 +1213,7 @@ void MeshMagic3D::slotShowPolygon()
             translation->Translate(lstActors[i]->GetCenter()[0], lstActors[i]->GetCenter()[1], lstActors[i]->GetCenter()[2]);
 
             vtkSmartPointer<vtkTransformPolyDataFilter> transformFilter = vtkSmartPointer<vtkTransformPolyDataFilter>::New();
-            transformFilter->SetInputConnection(input->GetProducerPort());
+            transformFilter->SetInputData(input);
             transformFilter->SetTransform(translation);
             transformFilter->Update();
 

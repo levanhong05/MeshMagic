@@ -13,7 +13,7 @@
 #ifndef ABOUTMESHMAGIC_H
 #define ABOUTMESHMAGIC_H
 
-#include "ui_AboutMeshMagic.h"
+#include "ui_about.h"
 
 class AboutMeshMagic : public QDialog, private Ui::AboutMeshMagic
 {

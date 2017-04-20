@@ -13,6 +13,8 @@
 #ifndef MESHMAGIC3D_H
 #define MESHMAGIC3D_H
 
+#define vtkRenderingCore_AUTOINIT 4(vtkInteractionStyle,vtkRenderingFreeType,vtkRenderingVolumeOpenGL,vtkRenderingOpenGL)
+
 #include <QList>
 #include <qthread.h>
 #include <QMainWindow>
@@ -30,9 +32,9 @@
 #include <vtkOrientationMarkerWidget.h>
 #include <vtkInteractorStyleTrackballCamera.h>
 
-#include "STLFileCore.h"
-#include "RotateThread.h"
-#include "ExtractionRegionThread.h"
+#include "stlfilecore.h"
+#include "rotatethread.h"
+#include "extractionregionthread.h"
 
 namespace Ui {
 class MeshMagic3D;

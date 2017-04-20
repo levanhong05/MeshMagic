@@ -81,8 +81,9 @@ public:
             #if VTK_MAJOR_VERSION <= 5
                 this->selectedMapper->SetInput(selected);
             #else
-                this->SelectedMapper->SetInputData(selected);
+                this->selectedMapper->SetInputData(selected);
             #endif
+
             this->selectedMapper->ScalarVisibilityOff();
 
             this->selectedActor->GetProperty()->SetColor(0.0, 1.0, 0.0); //(R,G,B)

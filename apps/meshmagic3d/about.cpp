@@ -10,8 +10,8 @@
 ** All rights reserved.
 ********************************************************************************/
 
-#include "AboutMeshMagic.h"
-#include "Branding.h"
+#include "about.h"
+#include "branding.h"
 
 AboutMeshMagic::AboutMeshMagic(QWidget *parent) :
     QDialog(parent)

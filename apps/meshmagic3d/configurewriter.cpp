@@ -1,5 +1,5 @@
-#include "ConfigureWriter.h"
-#include "ui_ConfigureWriter.h"
+#include "configurewriter.h"
+#include "ui_configurewriter.h"
 
 ConfigureWriter::ConfigureWriter(QWidget *parent) :
     QDialog(parent),

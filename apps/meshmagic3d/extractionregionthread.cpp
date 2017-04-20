@@ -12,7 +12,7 @@
 ** All rights reserved.
 ********************************************************************************/
 
-#include "ExtractionRegionThread.h"
+#include "extractionregionthread.h"
 
 #include <vtkPointData.h>
 #include <vtkSmartPointer.h>

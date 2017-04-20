@@ -12,7 +12,7 @@
 
 #include <QtGui>
 
-#include "RotateThread.h"
+#include "rotatethread.h"
 
 RotateThread::RotateThread(QObject *parent) : QThread(parent)
 {

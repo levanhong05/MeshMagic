@@ -10,7 +10,7 @@
 ** All rights reserved.
 ********************************************************************************/
 
-#include "STLFileCore.h"
+#include "stlfilecore.h"
 
 //Reader file
 #include <vtkSTLReader.h>
@@ -152,9 +152,10 @@ void STLFileCore::SaveSTLFile(QString fileName)
             translation->Translate(this->lstActors[i]->GetCenter()[0], this->lstActors[i]->GetCenter()[1], this->lstActors[i]->GetCenter()[2]);
 
             vtkSmartPointer<vtkTransformPolyDataFilter> transformFilter = vtkSmartPointer<vtkTransformPolyDataFilter>::New();
-            transformFilter->SetInputConnection(input->GetProducerPort());
+            transformFilter->SetInputData(input);
             transformFilter->SetTransform(translation);
             transformFilter->Update();
+
             #if VTK_MAJOR_VERSION <= 5
                 appendFilter->AddInputConnection(transformFilter->GetOutputPort());
             #else
@@ -195,7 +196,7 @@ void STLFileCore::SaveSTLFile(QString fileName)
             translation->Translate(this->lstActors[i]->GetCenter()[0], this->lstActors[i]->GetCenter()[1], this->lstActors[i]->GetCenter()[2]);
 
             vtkSmartPointer<vtkTransformPolyDataFilter> transformFilter = vtkSmartPointer<vtkTransformPolyDataFilter>::New();
-            transformFilter->SetInputConnection(input->GetProducerPort());
+            transformFilter->SetInputData(input);
             transformFilter->SetTransform(translation);
             transformFilter->Update();
             #if VTK_MAJOR_VERSION <= 5
@@ -238,7 +239,7 @@ void STLFileCore::SaveSTLFile(QString fileName)
             translation->Translate(this->lstActors[i]->GetCenter()[0], this->lstActors[i]->GetCenter()[1], this->lstActors[i]->GetCenter()[2]);
 
             vtkSmartPointer<vtkTransformPolyDataFilter> transformFilter = vtkSmartPointer<vtkTransformPolyDataFilter>::New();
-            transformFilter->SetInputConnection(input->GetProducerPort());
+            transformFilter->SetInputData(input);
             transformFilter->SetTransform(translation);
             transformFilter->Update();
             #if VTK_MAJOR_VERSION <= 5
@@ -281,7 +282,7 @@ void STLFileCore::SaveSTLFile(QString fileName)
             translation->Translate(this->lstActors[i]->GetCenter()[0], this->lstActors[i]->GetCenter()[1], this->lstActors[i]->GetCenter()[2]);
 
             vtkSmartPointer<vtkTransformPolyDataFilter> transformFilter = vtkSmartPointer<vtkTransformPolyDataFilter>::New();
-            transformFilter->SetInputConnection(input->GetProducerPort());
+            transformFilter->SetInputData(input);
             transformFilter->SetTransform(translation);
             transformFilter->Update();
             #if VTK_MAJOR_VERSION <= 5
@@ -302,7 +303,7 @@ void STLFileCore::SaveSTLFile(QString fileName)
         triangleFilter->Update();
 
         //writer->SetInputConnection(triangleFilter->GetOutputPort());
-        writer->SetInput(triangleFilter->GetOutput());
+        writer->SetInputData(triangleFilter->GetOutput());
 
         if (this->m_EncodeSupport == 0) {
             writer->SetDataModeToAscii();

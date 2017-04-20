@@ -10,7 +10,7 @@
 ** All rights reserved.
 ********************************************************************************/
 
-#include "MeshMagic3D.h"
+#include "meshmagic3d.h"
 #include <QApplication>
 
 int main(int argc, char *argv[])

@@ -14,36 +14,36 @@ win32:TARGET = ../../../dist/bin/meshmagic3d
 TEMPLATE = app
 
 SOURCES += 	main.cpp\
-			about.cpp \
-			meshmagic3d.cpp \
-			stlfilecore.cpp \
-			rotatethread.cpp \
-			configurewriter.cpp \
-			extractionregionthread.cpp
+            about.cpp \
+            meshmagic3d.cpp \
+            stlfilecore.cpp \
+            rotatethread.cpp \
+            configurewriter.cpp \
+            extractionregionthread.cpp
 
 HEADERS  += \
-			about.h \
-			branding.h \
-			meshmagic3d.h \
-			stlfilecore.h \
-			rotatethread.h \
-			globalvariable.h \
-			configurewriter.h \
-			extractionregionthread.h \
-			interactor/interactorstyledeletecell.h \
-			interactor/keyinteractorextractregions.h \
-			interactor/mouseinteractorhighlightcell.h \
-			interactor/mouseinteractorhighlightline.h \
-			interactor/mouseinteractorhighlightactor.h \
-			interactor/mouseinteractorhighlightpoint.h \
-			interactor/mouseinteractorhighlighttriangle.h \
-			interactor/mouseinteractorhighlightcellneighbors.h \
-			interactor/mouseinteractorhighlightpointneighbors.h
+            about.h \
+            branding.h \
+            meshmagic3d.h \
+            stlfilecore.h \
+            rotatethread.h \
+            globalvariable.h \
+            configurewriter.h \
+            extractionregionthread.h \
+            interactor/interactorstyledeletecell.h \
+            interactor/keyinteractorextractregions.h \
+            interactor/mouseinteractorhighlightcell.h \
+            interactor/mouseinteractorhighlightline.h \
+            interactor/mouseinteractorhighlightactor.h \
+            interactor/mouseinteractorhighlightpoint.h \
+            interactor/mouseinteractorhighlighttriangle.h \
+            interactor/mouseinteractorhighlightcellneighbors.h \
+            interactor/mouseinteractorhighlightpointneighbors.h
 
 FORMS    += \
-			meshmagic3d.ui \
-			about.ui \
-			configurewriter.ui
+            meshmagic3d.ui \
+            about.ui \
+            configurewriter.ui
 
 RESOURCES += \
     meshmagic3d_res.qrc
@@ -103,4 +103,9 @@ LIBS += -lvtkCommonCore-6.3 \
         -lvtkRenderingVolumeOpenGL-6.3 \
         -lvtkRenderingImage-6.3 \
         -lvtkViewsCore-6.3 \
-        -lvtkViewsQt-6.3
+        -lvtkViewsQt-6.3 \
+        -lvtkCommonComputationalGeometry-6.3 \
+        -lvtkFiltersTexture-6.3 \
+        -lvtkIOPLY-6.3 \
+        -lvtkIOXML-6.3 \
+        -lvtkIOLegacy-6.3

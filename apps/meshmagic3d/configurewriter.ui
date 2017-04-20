@@ -26,7 +26,7 @@
    <string>Configure Writer</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="MeshMagic3DResources.qrc">
+   <iconset resource="meshmagic3d_res.qrc">
     <normaloff>:/images/iconMesh.ico</normaloff>:/images/iconMesh.ico</iconset>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
@@ -99,7 +99,7 @@
   </layout>
  </widget>
  <resources>
-  <include location="MeshMagic3DResources.qrc"/>
+  <include location="meshmagic3d_res.qrc"/>
  </resources>
  <connections>
   <connection>
