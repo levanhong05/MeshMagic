@@ -4,7 +4,7 @@ CONFIG -= debug_and_release
 
 win32 {
     SOURCEPATH=$$PWD
-CONFIG(release, debug|release){
+CONFIG(release, debug|release) {
     BUILDBAT_RELEASE=$$PWD/build_release.bat
     first.commands = $(COPY) $$replace(BUILDBAT_RELEASE,/,\\) && call build_release.bat $$replace(SOURCEPATH,/,\\)
 } else {
