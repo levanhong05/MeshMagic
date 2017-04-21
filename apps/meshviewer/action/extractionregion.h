@@ -24,13 +24,12 @@
 
 #include <vector>
 
-class ExtractionRegionThread : public QThread
+class ExtractionRegion : public QThread
 {
     Q_OBJECT
-
 public:
-    ExtractionRegionThread(QObject *parent = 0);
-    ~ExtractionRegionThread();
+    ExtractionRegion(QObject *parent = 0);
+    ~ExtractionRegion();
 
     void ExtractRegion(vtkActor *actor);
     void abort();
@@ -46,9 +45,10 @@ private:
     QMutex mutex;
     bool m_abort;
     bool m_working;
+
     vtkActor *m_InputActor;
     vtkActor *m_OutputActor;
-    //vtkActorCollection *m_ActorCollection;
+
 };
 
 #endif // EXTRACTIONREGIONTHREAD_H

@@ -12,9 +12,10 @@
 
 #include <QtGui>
 
-#include "rotatethread.h"
+#include "rotate.h"
 
-RotateThread::RotateThread(QObject *parent) : QThread(parent)
+RotateThread::RotateThread(QObject *parent) :
+    QThread(parent)
 {
     this->m_pAngle = 0;
     m_restart = false;
@@ -27,14 +28,12 @@ RotateThread::~RotateThread()
     m_abort = true;
     //condition.wakeOne();
     mutex.unlock();
-
     wait();
 }
 
-void RotateThread::Rotate(double angle, int axis)
+void RotateThread::rotate(double angle, int axis)
 {
     QMutexLocker locker(&mutex);
-
     this->m_angle = angle;
     this->m_axis = axis;
 
@@ -46,13 +45,13 @@ void RotateThread::Rotate(double angle, int axis)
     }
 }
 
-void RotateThread::Rotate(std::vector<vtkSmartPointer<vtkActor> > lstActors, double angle, int axis)
+void RotateThread::rotate(std::vector<vtkSmartPointer<vtkActor> > lstActors, double angle, int axis)
 {
     QMutexLocker locker(&mutex);
-
     this->m_angle = angle;
     this->m_axis = axis;
     this->lstActors = lstActors;
+
     if (!isRunning()) {
         start(LowPriority);
     } else {
@@ -61,13 +60,13 @@ void RotateThread::Rotate(std::vector<vtkSmartPointer<vtkActor> > lstActors, dou
     }
 }
 
-void RotateThread::Rotate(vtkCamera *camera, double angle, int axis)
+void RotateThread::rotate(vtkCamera *camera, double angle, int axis)
 {
     QMutexLocker locker(&mutex);
-
     this->m_angle = angle;
     this->m_axis = axis;
     this->m_Camera = camera;
+
     if (!isRunning()) {
         start(LowPriority);
     } else {
@@ -76,10 +75,9 @@ void RotateThread::Rotate(vtkCamera *camera, double angle, int axis)
     }
 }
 
-void RotateThread::Rotate(std::vector<vtkSmartPointer<vtkActor> > lstActors, vtkCamera *camera, double angle, int axis)
+void RotateThread::rotate(std::vector<vtkSmartPointer<vtkActor> > lstActors, vtkCamera *camera, double angle, int axis)
 {
     QMutexLocker locker(&mutex);
-
     this->m_angle = angle;
     this->m_axis = axis;
     this->lstActors = lstActors;
@@ -96,12 +94,13 @@ void RotateThread::Rotate(std::vector<vtkSmartPointer<vtkActor> > lstActors, vtk
 void RotateThread::abort()
 {
     mutex.lock();
+
     if (isRunning()) {
         m_abort = true;
         //condition.wakeOne();
     }
-    mutex.unlock();
 
+    mutex.unlock();
     wait();
 }
 
@@ -110,10 +109,10 @@ void RotateThread::run()
     //if ((m_restart) || (m_abort)) {
     //    return;
     //}
-
     //Method 1: Set Azimuth and Elevation for camera,
     //but these parameters need calculate (see vtkInteractionStyleTrackballCamera.h)
     mutex.lock();
+
     if (this->m_axis == 0) {
         //Rotate camera about x-axis
         this->m_Camera->Elevation(this->m_angle - this->m_pAngle);
@@ -129,6 +128,7 @@ void RotateThread::run()
         this->m_Camera->Elevation(this->m_angle - this->m_pAngle);
         this->m_Camera->Roll(this->m_angle - this->m_pAngle);
     }
+
     this->m_Camera->OrthogonalizeViewUp();
     mutex.unlock();
 
@@ -183,7 +183,7 @@ void RotateThread::run()
 
     mutex.lock();
     //if (!m_restart) {
-        //condition.wait(&mutex);
+    //condition.wait(&mutex);
     //}
     this->m_pAngle = this->m_angle;
     m_restart = false;

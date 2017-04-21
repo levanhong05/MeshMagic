@@ -3,14 +3,14 @@
 
 #include <QDialog>
 
-namespace Ui {
-    class ConfigureWriter;
+namespace Ui
+{
+class ConfigureWriter;
 }
 
 class ConfigureWriter : public QDialog
 {
     Q_OBJECT
-
 public:
     explicit ConfigureWriter(QWidget *parent = 0);
     ~ConfigureWriter();

@@ -12,14 +12,14 @@
 ** All rights reserved.
 ********************************************************************************/
 
-#include "extractionregionthread.h"
+#include "extractionregion.h"
 
 #include <vtkPointData.h>
 #include <vtkSmartPointer.h>
 #include <vtkPolyDataMapper.h>
 #include <vtkPolyDataConnectivityFilter.h>
 
-ExtractionRegionThread::ExtractionRegionThread(QObject *parent) :
+ExtractionRegion::ExtractionRegion(QObject *parent) :
     QThread(parent)
 {
     m_working = false;
@@ -28,7 +28,7 @@ ExtractionRegionThread::ExtractionRegionThread(QObject *parent) :
     //m_ActorCollection = vtkActorCollection::New();
 }
 
-ExtractionRegionThread::~ExtractionRegionThread()
+ExtractionRegion::~ExtractionRegion()
 {
     mutex.lock();
     m_abort = true;
@@ -39,7 +39,7 @@ ExtractionRegionThread::~ExtractionRegionThread()
     wait();
 }
 
-void ExtractionRegionThread::ExtractRegion(vtkActor *actor)
+void ExtractionRegion::ExtractRegion(vtkActor *actor)
 {
     QMutexLocker locker(&mutex);
     this->m_InputActor = actor;
@@ -51,7 +51,7 @@ void ExtractionRegionThread::ExtractRegion(vtkActor *actor)
     }
 }
 
-void ExtractionRegionThread::abort()
+void ExtractionRegion::abort()
 {
     mutex.lock();
     if (isRunning()) {
@@ -64,7 +64,7 @@ void ExtractionRegionThread::abort()
     wait();
 }
 
-void ExtractionRegionThread::run()
+void ExtractionRegion::run()
 {
     mutex.lock();
     vtkSmartPointer<vtkPolyDataConnectivityFilter> connectivityFilter = vtkSmartPointer<vtkPolyDataConnectivityFilter>::New();

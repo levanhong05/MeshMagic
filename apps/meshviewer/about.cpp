@@ -11,16 +11,15 @@
 ********************************************************************************/
 
 #include "about.h"
-#include "branding.h"
+#include "version.h"
 
-AboutMeshMagic::AboutMeshMagic(QWidget *parent) :
+About::About(QWidget *parent) :
     QDialog(parent)
 {
-    setupUi(this);
-
+    ui->setupUi(this);
     QString text = tr("Mesh Magic 3D\n" \
                       "Version %1\n" \
                       "%2 2015 DFM-Engineering.\n" \
                       "All rights reserved.").arg(APP_VERSION_FULL).arg(QString::fromUtf8("®"));
-    this->lblCompany->setText(text);
+    ui->lblCompany->setText(text);
 }

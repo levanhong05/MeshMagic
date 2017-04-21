@@ -13,23 +13,21 @@ win32:TARGET = ../../../dist/bin/meshmagic3d
 
 TEMPLATE = app
 
-SOURCES += 	main.cpp\
+SOURCES +=  main.cpp\
             about.cpp \
-            meshmagic3d.cpp \
-            stlfilecore.cpp \
-            rotatethread.cpp \
+            IO/stlfilecore.cpp \
+            action/rotate.cpp \
             configurewriter.cpp \
-            extractionregionthread.cpp
+            action/extractionregion.cpp \
+            meshviewer.cpp
 
 HEADERS  += \
             about.h \
-            branding.h \
-            meshmagic3d.h \
-            stlfilecore.h \
-            rotatethread.h \
+            IO/stlfilecore.h \
+            action/rotate.h \
             globalvariable.h \
             configurewriter.h \
-            extractionregionthread.h \
+            action/extractionregion.h \
             interactor/interactorstyledeletecell.h \
             interactor/keyinteractorextractregions.h \
             interactor/mouseinteractorhighlightcell.h \
@@ -38,15 +36,17 @@ HEADERS  += \
             interactor/mouseinteractorhighlightpoint.h \
             interactor/mouseinteractorhighlighttriangle.h \
             interactor/mouseinteractorhighlightcellneighbors.h \
-            interactor/mouseinteractorhighlightpointneighbors.h
+            interactor/mouseinteractorhighlightpointneighbors.h \
+            version.h \
+            meshviewer.h
 
 FORMS    += \
-            meshmagic3d.ui \
             about.ui \
-            configurewriter.ui
+            configurewriter.ui \
+            meshviewer.ui
 
 RESOURCES += \
-    meshmagic3d_res.qrc
+            meshviewer_res.qrc
 
 OTHER_FILES += \
     data/MeshMagic.pdf

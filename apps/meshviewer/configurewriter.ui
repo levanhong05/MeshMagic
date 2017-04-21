@@ -26,8 +26,8 @@
    <string>Configure Writer</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="meshmagic3d_res.qrc">
-    <normaloff>:/images/iconMesh.ico</normaloff>:/images/iconMesh.ico</iconset>
+   <iconset resource="meshviewer_res.qrc">
+    <normaloff>:/meshviewer/images/iconMesh.ico</normaloff>:/meshviewer/images/iconMesh.ico</iconset>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
@@ -99,7 +99,7 @@
   </layout>
  </widget>
  <resources>
-  <include location="meshmagic3d_res.qrc"/>
+  <include location="meshviewer_res.qrc"/>
  </resources>
  <connections>
   <connection>

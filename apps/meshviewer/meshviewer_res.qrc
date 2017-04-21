@@ -1,5 +1,5 @@
 <RCC>
-    <qresource prefix="/">
+    <qresource prefix="/meshviewer">
         <file>images/iconMesh.ico</file>
         <file>images/new.png</file>
         <file>images/open.png</file>

@@ -47,11 +47,14 @@ protected:
 
 private:
     QMutex mutex;
+
     int m_Type;             //0: Read       1: Save
     int m_FileSupport;      //0: STL        1: PLY          2: VTK          3: VTP
     int m_EncodeSupport;    //0: ANSCII     1: Binary
+
     bool m_abort;
     bool m_working;
+
     QString m_FileName;
     vtkActor *m_Actor;
     std::vector<vtkSmartPointer<vtkActor> > lstActors;

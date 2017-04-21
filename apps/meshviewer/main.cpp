@@ -1,8 +1,8 @@
 /********************************************************************************
 ** Program:   Mesh Magic 3D v1.0.0
-** File:      AboutMeshMagic.h
+** File:      main.cpp
 **
-** Created: Wed 06. May 16:01:00 2015
+** Created: Wed 06. May 08:16:00 2015
 **      by: Hong Le Van
 **      in: Ho Chi Minh City, Vietnam
 **
@@ -10,17 +10,14 @@
 ** All rights reserved.
 ********************************************************************************/
 
-#ifndef ABOUTMESHMAGIC_H
-#define ABOUTMESHMAGIC_H
+#include "meshviewer.h"
+#include <QApplication>
 
-#include "ui_about.h"
-
-class AboutMeshMagic : public QDialog, private Ui::AboutMeshMagic
+int main(int argc, char *argv[])
 {
-    Q_OBJECT
+    QApplication a(argc, argv);
+    MeshViewer meshMagic3D;
+    meshMagic3D.show();
 
-public:
-    explicit AboutMeshMagic(QWidget *parent = 0);
-};
-
-#endif // ABOUTMESHMAGIC_H
+    return a.exec();
+}

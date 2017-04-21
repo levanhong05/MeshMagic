@@ -33,10 +33,11 @@ public:
     RotateThread(QObject *parent = 0);
     ~RotateThread();
 
-    void Rotate(double angle, int axis = 3);
-    void Rotate(vtkCamera *camera, double angle, int axis = 3);
-    void Rotate(std::vector<vtkSmartPointer<vtkActor> > lstActors, double angle, int axis = 3);
-    void Rotate(std::vector<vtkSmartPointer<vtkActor> > lstActors, vtkCamera *camera, double angle, int axis = 3);
+    void rotate(double angle, int axis = 3);
+    void rotate(vtkCamera *camera, double angle, int axis = 3);
+    void rotate(std::vector<vtkSmartPointer<vtkActor> > lstActors, double angle, int axis = 3);
+    void rotate(std::vector<vtkSmartPointer<vtkActor> > lstActors, vtkCamera *camera, double angle, int axis = 3);
+
     void abort();
 
 signals:
@@ -49,6 +50,7 @@ private:
     QMutex mutex;
     vtkCamera *m_Camera;
     std::vector<vtkSmartPointer<vtkActor> > lstActors;
+
     //Specify axis is rotate
     int m_axis;
     //Specify angle is rotate

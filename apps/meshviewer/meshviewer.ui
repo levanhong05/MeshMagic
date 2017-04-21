@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>MeshMagic3D</class>
- <widget class="QMainWindow" name="MeshMagic3D">
+ <class>MeshViewer</class>
+ <widget class="QMainWindow" name="MeshViewer">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>754</width>
-    <height>497</height>
+    <width>897</width>
+    <height>661</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Mesh Magic 3D</string>
+   <string>Mesh 3D Viewer</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="meshmagic3d_res.qrc">
-    <normaloff>:/images/iconMesh.ico</normaloff>:/images/iconMesh.ico</iconset>
+   <iconset resource="meshviewer_res.qrc">
+    <normaloff>:/meshviewer/images/iconMesh.ico</normaloff>:/meshviewer/images/iconMesh.ico</iconset>
   </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QVBoxLayout" name="verticalLayout">
@@ -70,7 +70,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>754</width>
+     <width>897</width>
      <height>21</height>
     </rect>
    </property>
@@ -257,8 +257,8 @@
   </widget>
   <action name="actionOpen">
    <property name="icon">
-    <iconset resource="meshmagic3d_res.qrc">
-     <normaloff>:/images/open.png</normaloff>:/images/open.png</iconset>
+    <iconset resource="meshviewer_res.qrc">
+     <normaloff>:/meshviewer/images/open.png</normaloff>:/meshviewer/images/open.png</iconset>
    </property>
    <property name="text">
     <string>Open File...</string>
@@ -275,8 +275,8 @@
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset resource="meshmagic3d_res.qrc">
-     <normaloff>:/images/save.png</normaloff>:/images/save.png</iconset>
+    <iconset resource="meshviewer_res.qrc">
+     <normaloff>:/meshviewer/images/save.png</normaloff>:/meshviewer/images/save.png</iconset>
    </property>
    <property name="text">
     <string>Save File...</string>
@@ -290,8 +290,8 @@
   </action>
   <action name="actionExit">
    <property name="icon">
-    <iconset resource="meshmagic3d_res.qrc">
-     <normaloff>:/images/quit.png</normaloff>:/images/quit.png</iconset>
+    <iconset resource="meshviewer_res.qrc">
+     <normaloff>:/meshviewer/images/quit.png</normaloff>:/meshviewer/images/quit.png</iconset>
    </property>
    <property name="text">
     <string>Exit</string>
@@ -305,8 +305,8 @@
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset resource="meshmagic3d_res.qrc">
-     <normaloff>:/images/save.png</normaloff>:/images/save.png</iconset>
+    <iconset resource="meshviewer_res.qrc">
+     <normaloff>:/meshviewer/images/save.png</normaloff>:/meshviewer/images/save.png</iconset>
    </property>
    <property name="text">
     <string>Save As...</string>
@@ -320,8 +320,8 @@
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset resource="meshmagic3d_res.qrc">
-     <normaloff>:/images/light.png</normaloff>:/images/light.png</iconset>
+    <iconset resource="meshviewer_res.qrc">
+     <normaloff>:/meshviewer/images/light.png</normaloff>:/meshviewer/images/light.png</iconset>
    </property>
    <property name="text">
     <string>Add Light...</string>
@@ -338,8 +338,8 @@
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset resource="meshmagic3d_res.qrc">
-     <normaloff>:/images/shadow.png</normaloff>:/images/shadow.png</iconset>
+    <iconset resource="meshviewer_res.qrc">
+     <normaloff>:/meshviewer/images/shadow.png</normaloff>:/meshviewer/images/shadow.png</iconset>
    </property>
    <property name="text">
     <string>Add Shader...</string>
@@ -353,8 +353,8 @@
   </action>
   <action name="actionAddMaterial">
    <property name="icon">
-    <iconset resource="meshmagic3d_res.qrc">
-     <normaloff>:/images/material.png</normaloff>:/images/material.png</iconset>
+    <iconset resource="meshviewer_res.qrc">
+     <normaloff>:/meshviewer/images/material.png</normaloff>:/meshviewer/images/material.png</iconset>
    </property>
    <property name="text">
     <string>Add Texture...</string>
@@ -368,8 +368,8 @@
   </action>
   <action name="actionClose">
    <property name="icon">
-    <iconset resource="meshmagic3d_res.qrc">
-     <normaloff>:/images/close.png</normaloff>:/images/close.png</iconset>
+    <iconset resource="meshviewer_res.qrc">
+     <normaloff>:/meshviewer/images/close.png</normaloff>:/meshviewer/images/close.png</iconset>
    </property>
    <property name="text">
     <string>Close File...</string>
@@ -386,8 +386,8 @@
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset resource="meshmagic3d_res.qrc">
-     <normaloff>:/images/solid.png</normaloff>:/images/solid.png</iconset>
+    <iconset resource="meshviewer_res.qrc">
+     <normaloff>:/meshviewer/images/solid.png</normaloff>:/meshviewer/images/solid.png</iconset>
    </property>
    <property name="text">
     <string>Solid</string>
@@ -404,8 +404,8 @@
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset resource="meshmagic3d_res.qrc">
-     <normaloff>:/images/wireframe.png</normaloff>:/images/wireframe.png</iconset>
+    <iconset resource="meshviewer_res.qrc">
+     <normaloff>:/meshviewer/images/wireframe.png</normaloff>:/meshviewer/images/wireframe.png</iconset>
    </property>
    <property name="text">
     <string>Wire Frame</string>
@@ -419,8 +419,8 @@
   </action>
   <action name="actionSelectObject">
    <property name="icon">
-    <iconset resource="meshmagic3d_res.qrc">
-     <normaloff>:/images/selectobject.png</normaloff>:/images/selectobject.png</iconset>
+    <iconset resource="meshviewer_res.qrc">
+     <normaloff>:/meshviewer/images/selectobject.png</normaloff>:/meshviewer/images/selectobject.png</iconset>
    </property>
    <property name="text">
     <string>Select Object</string>
@@ -431,8 +431,8 @@
   </action>
   <action name="actionSelectCell">
    <property name="icon">
-    <iconset resource="meshmagic3d_res.qrc">
-     <normaloff>:/images/selectcell.png</normaloff>:/images/selectcell.png</iconset>
+    <iconset resource="meshviewer_res.qrc">
+     <normaloff>:/meshviewer/images/selectcell.png</normaloff>:/meshviewer/images/selectcell.png</iconset>
    </property>
    <property name="text">
     <string>Select Cells</string>
@@ -443,8 +443,8 @@
   </action>
   <action name="actionSelectTriangle">
    <property name="icon">
-    <iconset resource="meshmagic3d_res.qrc">
-     <normaloff>:/images/selecttriangle.png</normaloff>:/images/selecttriangle.png</iconset>
+    <iconset resource="meshviewer_res.qrc">
+     <normaloff>:/meshviewer/images/selecttriangle.png</normaloff>:/meshviewer/images/selecttriangle.png</iconset>
    </property>
    <property name="text">
     <string>Select Triangle</string>
@@ -455,8 +455,8 @@
   </action>
   <action name="actionSelectLine">
    <property name="icon">
-    <iconset resource="meshmagic3d_res.qrc">
-     <normaloff>:/images/selectline.png</normaloff>:/images/selectline.png</iconset>
+    <iconset resource="meshviewer_res.qrc">
+     <normaloff>:/meshviewer/images/selectline.png</normaloff>:/meshviewer/images/selectline.png</iconset>
    </property>
    <property name="text">
     <string>Select Line</string>
@@ -470,8 +470,8 @@
   </action>
   <action name="actionSelectPoint">
    <property name="icon">
-    <iconset resource="meshmagic3d_res.qrc">
-     <normaloff>:/images/selectpoint.png</normaloff>:/images/selectpoint.png</iconset>
+    <iconset resource="meshviewer_res.qrc">
+     <normaloff>:/meshviewer/images/selectpoint.png</normaloff>:/meshviewer/images/selectpoint.png</iconset>
    </property>
    <property name="text">
     <string>Select Points</string>
@@ -482,8 +482,8 @@
   </action>
   <action name="actionAddCube">
    <property name="icon">
-    <iconset resource="meshmagic3d_res.qrc">
-     <normaloff>:/images/cube.png</normaloff>:/images/cube.png</iconset>
+    <iconset resource="meshviewer_res.qrc">
+     <normaloff>:/meshviewer/images/cube.png</normaloff>:/meshviewer/images/cube.png</iconset>
    </property>
    <property name="text">
     <string>Add Cube</string>
@@ -497,8 +497,8 @@
   </action>
   <action name="actionAddSphere">
    <property name="icon">
-    <iconset resource="meshmagic3d_res.qrc">
-     <normaloff>:/images/sphere.png</normaloff>:/images/sphere.png</iconset>
+    <iconset resource="meshviewer_res.qrc">
+     <normaloff>:/meshviewer/images/sphere.png</normaloff>:/meshviewer/images/sphere.png</iconset>
    </property>
    <property name="text">
     <string>Add Sphere</string>
@@ -512,8 +512,8 @@
   </action>
   <action name="actionAddIcosahedron">
    <property name="icon">
-    <iconset resource="meshmagic3d_res.qrc">
-     <normaloff>:/images/icosahedron.png</normaloff>:/images/icosahedron.png</iconset>
+    <iconset resource="meshviewer_res.qrc">
+     <normaloff>:/meshviewer/images/icosahedron.png</normaloff>:/meshviewer/images/icosahedron.png</iconset>
    </property>
    <property name="text">
     <string>Add Icosahedron</string>
@@ -527,8 +527,8 @@
   </action>
   <action name="actionAddTorus">
    <property name="icon">
-    <iconset resource="meshmagic3d_res.qrc">
-     <normaloff>:/images/torus.png</normaloff>:/images/torus.png</iconset>
+    <iconset resource="meshviewer_res.qrc">
+     <normaloff>:/meshviewer/images/torus.png</normaloff>:/meshviewer/images/torus.png</iconset>
    </property>
    <property name="text">
     <string>Add Torus</string>
@@ -545,8 +545,8 @@
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset resource="meshmagic3d_res.qrc">
-     <normaloff>:/images/point.png</normaloff>:/images/point.png</iconset>
+    <iconset resource="meshviewer_res.qrc">
+     <normaloff>:/meshviewer/images/point.png</normaloff>:/meshviewer/images/point.png</iconset>
    </property>
    <property name="text">
     <string>Points</string>
@@ -560,8 +560,8 @@
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset resource="meshmagic3d_res.qrc">
-     <normaloff>:/images/outline.png</normaloff>:/images/outline.png</iconset>
+    <iconset resource="meshviewer_res.qrc">
+     <normaloff>:/meshviewer/images/outline.png</normaloff>:/meshviewer/images/outline.png</iconset>
    </property>
    <property name="text">
     <string>Outline</string>
@@ -575,8 +575,8 @@
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset resource="meshmagic3d_res.qrc">
-     <normaloff>:/images/edges.png</normaloff>:/images/edges.png</iconset>
+    <iconset resource="meshviewer_res.qrc">
+     <normaloff>:/meshviewer/images/edges.png</normaloff>:/meshviewer/images/edges.png</iconset>
    </property>
    <property name="text">
     <string>Edges</string>
@@ -587,8 +587,8 @@
   </action>
   <action name="actionResetCenter">
    <property name="icon">
-    <iconset resource="meshmagic3d_res.qrc">
-     <normaloff>:/images/resetcenter.png</normaloff>:/images/resetcenter.png</iconset>
+    <iconset resource="meshviewer_res.qrc">
+     <normaloff>:/meshviewer/images/resetcenter.png</normaloff>:/meshviewer/images/resetcenter.png</iconset>
    </property>
    <property name="text">
     <string>Reset Center</string>
@@ -602,8 +602,8 @@
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset resource="meshmagic3d_res.qrc">
-     <normaloff>:/images/polygon.png</normaloff>:/images/polygon.png</iconset>
+    <iconset resource="meshviewer_res.qrc">
+     <normaloff>:/meshviewer/images/polygon.png</normaloff>:/meshviewer/images/polygon.png</iconset>
    </property>
    <property name="text">
     <string>Polygon</string>
@@ -617,8 +617,8 @@
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset resource="meshmagic3d_res.qrc">
-     <normaloff>:/images/centeraxes.png</normaloff>:/images/centeraxes.png</iconset>
+    <iconset resource="meshviewer_res.qrc">
+     <normaloff>:/meshviewer/images/centeraxes.png</normaloff>:/meshviewer/images/centeraxes.png</iconset>
    </property>
    <property name="text">
     <string>Show Axes Center</string>
@@ -629,8 +629,8 @@
   </action>
   <action name="actionAbout">
    <property name="icon">
-    <iconset resource="meshmagic3d_res.qrc">
-     <normaloff>:/images/about.png</normaloff>:/images/about.png</iconset>
+    <iconset resource="meshviewer_res.qrc">
+     <normaloff>:/meshviewer/images/about.png</normaloff>:/meshviewer/images/about.png</iconset>
    </property>
    <property name="text">
     <string>About Mesh Magic 3D</string>
@@ -641,8 +641,8 @@
   </action>
   <action name="actionColor">
    <property name="icon">
-    <iconset resource="meshmagic3d_res.qrc">
-     <normaloff>:/images/color.png</normaloff>:/images/color.png</iconset>
+    <iconset resource="meshviewer_res.qrc">
+     <normaloff>:/meshviewer/images/color.png</normaloff>:/meshviewer/images/color.png</iconset>
    </property>
    <property name="text">
     <string>Color</string>
@@ -656,8 +656,8 @@
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset resource="meshmagic3d_res.qrc">
-     <normaloff>:/images/zone.png</normaloff>:/images/zone.png</iconset>
+    <iconset resource="meshviewer_res.qrc">
+     <normaloff>:/meshviewer/images/zone.png</normaloff>:/meshviewer/images/zone.png</iconset>
    </property>
    <property name="text">
     <string>Show Zones</string>
@@ -671,8 +671,8 @@
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset resource="meshmagic3d_res.qrc">
-     <normaloff>:/images/generate.png</normaloff>:/images/generate.png</iconset>
+    <iconset resource="meshviewer_res.qrc">
+     <normaloff>:/meshviewer/images/generate.png</normaloff>:/meshviewer/images/generate.png</iconset>
    </property>
    <property name="text">
     <string>Generate Color</string>
@@ -683,8 +683,8 @@
   </action>
   <action name="actionSelectPointNeighbors">
    <property name="icon">
-    <iconset resource="meshmagic3d_res.qrc">
-     <normaloff>:/images/selectpoint.png</normaloff>:/images/selectpoint.png</iconset>
+    <iconset resource="meshviewer_res.qrc">
+     <normaloff>:/meshviewer/images/selectpoint.png</normaloff>:/meshviewer/images/selectpoint.png</iconset>
    </property>
    <property name="text">
     <string>Select Point With Neighbors</string>
@@ -695,8 +695,8 @@
   </action>
   <action name="actionSelectCellNeighbors">
    <property name="icon">
-    <iconset resource="meshmagic3d_res.qrc">
-     <normaloff>:/images/selectcell.png</normaloff>:/images/selectcell.png</iconset>
+    <iconset resource="meshviewer_res.qrc">
+     <normaloff>:/meshviewer/images/selectcell.png</normaloff>:/meshviewer/images/selectcell.png</iconset>
    </property>
    <property name="text">
     <string>Select Cell With Neighbors</string>
@@ -710,8 +710,8 @@
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset resource="meshmagic3d_res.qrc">
-     <normaloff>:/images/deletecell.png</normaloff>:/images/deletecell.png</iconset>
+    <iconset resource="meshviewer_res.qrc">
+     <normaloff>:/meshviewer/images/deletecell.png</normaloff>:/meshviewer/images/deletecell.png</iconset>
    </property>
    <property name="text">
     <string>Delete Cell</string>
@@ -728,8 +728,8 @@
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset resource="meshmagic3d_res.qrc">
-     <normaloff>:/images/anaglyph3d.png</normaloff>:/images/anaglyph3d.png</iconset>
+    <iconset resource="meshviewer_res.qrc">
+     <normaloff>:/meshviewer/images/anaglyph3d.png</normaloff>:/meshviewer/images/anaglyph3d.png</iconset>
    </property>
    <property name="text">
     <string>Anaglyph</string>
@@ -740,8 +740,8 @@
   </action>
   <action name="actionScreenshot">
    <property name="icon">
-    <iconset resource="meshmagic3d_res.qrc">
-     <normaloff>:/images/snapshot.png</normaloff>:/images/snapshot.png</iconset>
+    <iconset resource="meshviewer_res.qrc">
+     <normaloff>:/meshviewer/images/snapshot.png</normaloff>:/meshviewer/images/snapshot.png</iconset>
    </property>
    <property name="text">
     <string>Screenshot</string>
@@ -752,8 +752,8 @@
   </action>
   <action name="actionFullscreen">
    <property name="icon">
-    <iconset resource="meshmagic3d_res.qrc">
-     <normaloff>:/images/fullscreen.png</normaloff>:/images/fullscreen.png</iconset>
+    <iconset resource="meshviewer_res.qrc">
+     <normaloff>:/meshviewer/images/fullscreen.png</normaloff>:/meshviewer/images/fullscreen.png</iconset>
    </property>
    <property name="text">
     <string>Fullscreen</string>
@@ -764,8 +764,8 @@
   </action>
   <action name="actionResetView">
    <property name="icon">
-    <iconset resource="meshmagic3d_res.qrc">
-     <normaloff>:/images/rotate.png</normaloff>:/images/rotate.png</iconset>
+    <iconset resource="meshviewer_res.qrc">
+     <normaloff>:/meshviewer/images/rotate.png</normaloff>:/meshviewer/images/rotate.png</iconset>
    </property>
    <property name="text">
     <string>Reset View</string>
@@ -776,8 +776,8 @@
   </action>
   <action name="actionHelpContent">
    <property name="icon">
-    <iconset resource="meshmagic3d_res.qrc">
-     <normaloff>:/images/help.png</normaloff>:/images/help.png</iconset>
+    <iconset resource="meshviewer_res.qrc">
+     <normaloff>:/meshviewer/images/help.png</normaloff>:/meshviewer/images/help.png</iconset>
    </property>
    <property name="text">
     <string>Help Contents</string>
@@ -799,7 +799,7 @@
   </customwidget>
  </customwidgets>
  <resources>
-  <include location="meshmagic3d_res.qrc"/>
+  <include location="meshviewer_res.qrc"/>
  </resources>
  <connections/>
 </ui>

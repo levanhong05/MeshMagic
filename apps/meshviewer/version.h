@@ -1,6 +1,6 @@
 /********************************************************************************
 ** Program:   Mesh Magic 3D v1.0.0
-** File:      Branding.h
+** File:      version.h
 **
 ** Created: Tue 19. May 09:42:00 2015
 **      by: Hong Le Van
@@ -12,8 +12,8 @@
 ** All rights reserved.
 ********************************************************************************/
 
-#ifndef BRANDING_H
-#define BRANDING_H
+#ifndef VERSION_H
+#define VERSION_H
 
 #define APP_VERSION_MAJOR 1
 #define APP_VERSION_MINOR 0
@@ -25,4 +25,4 @@
 #define APP_VERSION_FULL "1.0.0 (build 1000)"
 #define APP_VERSION_SHORT "1.0.0"
 
-#endif // BRANDING_H
+#endif // VERSION_H

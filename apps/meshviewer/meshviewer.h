@@ -16,7 +16,7 @@
 #define vtkRenderingCore_AUTOINIT 4(vtkInteractionStyle,vtkRenderingFreeType,vtkRenderingVolumeOpenGL,vtkRenderingOpenGL)
 
 #include <QList>
-#include <qthread.h>
+#include <QThread>
 #include <QMainWindow>
 #include <QVTKWidget.h>
 
@@ -32,21 +32,21 @@
 #include <vtkOrientationMarkerWidget.h>
 #include <vtkInteractorStyleTrackballCamera.h>
 
-#include "stlfilecore.h"
-#include "rotatethread.h"
-#include "extractionregionthread.h"
+#include "IO/stlfilecore.h"
+#include "action/rotate.h"
+#include "action/extractionregion.h"
 
-namespace Ui {
-class MeshMagic3D;
+namespace Ui
+{
+class MeshViewer;
 }
 
-class MeshMagic3D : public QMainWindow
+class MeshViewer : public QMainWindow
 {
     Q_OBJECT
-
 public:
-    explicit MeshMagic3D(QWidget *parent = 0);
-    ~MeshMagic3D();
+    explicit MeshViewer(QWidget *parent = 0);
+    ~MeshViewer();
 
 private:
     void createActions();
@@ -126,12 +126,12 @@ private slots:
     void slotExtractDone(vtkActor *actor, unsigned int numRegions);
 
 private:
-    Ui::MeshMagic3D *ui;
+    Ui::MeshViewer *ui;
 
     //User thread object
-    RotateThread thread;
+    RotateThread _threadRotate;
     STLFileCore STLCore;
-    ExtractionRegionThread extractThread;
+    ExtractionRegion extractThread;
 
     bool isChangeInputFile;
 
