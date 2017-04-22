@@ -40,5 +40,6 @@
         <file>images/rotate.png</file>
         <file>images/logo.png</file>
         <file>images/help.png</file>
+        <file>images/viewer.png</file>
     </qresource>
 </RCC>

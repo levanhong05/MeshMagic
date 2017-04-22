@@ -1,6 +1,6 @@
 /********************************************************************************
 ** Program:   Mesh Magic 3D v1.0.0
-** File:      MeshMagic3D.h
+** File:      MeshViewer.h
 **
 ** Created: Wed 06. May 08:16:00 2015
 **      by: Hong Le Van
@@ -10,8 +10,8 @@
 ** All rights reserved.
 ********************************************************************************/
 
-#ifndef MESHMAGIC3D_H
-#define MESHMAGIC3D_H
+#ifndef MESHVIEWER_H
+#define MESHVIEWER_H
 
 #define vtkRenderingCore_AUTOINIT 4(vtkInteractionStyle,vtkRenderingFreeType,vtkRenderingVolumeOpenGL,vtkRenderingOpenGL)
 
@@ -139,4 +139,4 @@ signals:
     void emitTerminate();
 };
 
-#endif // MESHMAGIC3D_H
+#endif // MESHVIEWER_H

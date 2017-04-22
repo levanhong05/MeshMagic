@@ -27,7 +27,7 @@
   </property>
   <property name="windowIcon">
    <iconset resource="meshviewer_res.qrc">
-    <normaloff>:/meshviewer/images/iconMesh.ico</normaloff>:/meshviewer/images/iconMesh.ico</iconset>
+    <normaloff>:/meshviewer/images/viewer.png</normaloff>:/meshviewer/images/viewer.png</iconset>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>

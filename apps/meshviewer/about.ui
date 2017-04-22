@@ -33,7 +33,7 @@
   </property>
   <property name="windowIcon">
    <iconset resource="meshviewer_res.qrc">
-    <normaloff>:/meshviewer/images/iconMesh.ico</normaloff>:/meshviewer/images/iconMesh.ico</iconset>
+    <normaloff>:/meshviewer/images/viewer.png</normaloff>:/meshviewer/images/viewer.png</iconset>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
@@ -143,13 +143,12 @@ p, li { white-space: pre-wrap; }
            <item>
             <widget class="QLabel" name="lblCompany">
              <property name="text">
-              <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+              <string>&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:8pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p align=&quot;justify&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Mesh Magic 3D&lt;/p&gt;
 &lt;p align=&quot;justify&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Version 1.0.0 (build 1000)&lt;/p&gt;
-&lt;p align=&quot;justify&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;® 2015 DFM-Engineering.&lt;/p&gt;
+&lt;p align=&quot;justify&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;® 2015 Eric Lee.&lt;/p&gt;
 &lt;p align=&quot;justify&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;All rights reserved.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
@@ -203,13 +202,13 @@ p, li { white-space: pre-wrap; }
           <bool>true</bool>
          </property>
          <property name="plainText">
-          <string>1. The copyrights in this software and any visual or audio work distributed with the software belong to DFM Engineering and others listed in the about box. All rights are reserved. Installation of this software and any DFM Engineering bundled with or installed-on-demand from this software, including shortcuts and start menu folders, is licensed only in accordance with these terms.
+          <string>1. The copyrights in this software and any visual or audio work distributed with the software belong to Eric Lee and others listed in the about box. All rights are reserved. Installation of this software and any Eric Lee bundled with or installed-on-demand from this software, including shortcuts and start menu folders, is licensed only in accordance with these terms.
 2. By installing, using or distributing the software you, on your own behalf and on behalf of your employer or principal, agree to be bound by these terms. If you do not agree to any of these terms, you may not use, copy, transmit, distribute, nor install this software - return it to the place of purchase within 14 days to receive a full refund.
 3. This software, and all accompanying files, data and materials, are distributed &quot;as is&quot; and with no warranties of any kind, whether express or implied except as required by law. If you intend to rely on this software for critical purposes you must test it fully prior to using it, install redundant systems and assume any risk.
 4. We will not be liable for any loss arising out of the use of this software including, but not limited to, any special, incidental or consequential loss. Your entire remedy against us for all claims is limited to receiving a full refund for the amount you paid for the software.
 5. You may not use this software in any circumstances where there is any risk that failure of this software might result in a physical injury or loss of life. You agree to indemnify us from any claims relating to such unauthorized use.
 6. You may copy or distribute the installation file of this software in its complete unaltered form but you may not, under any circumstances, distribute any software registration code for any of our programs without written permission. In the event that you do distribute a software registration code, you will be liable to pay the full purchase price for each location where the unauthorized use occurs.
-7. Use of data collected by the software is subject to the DFM Engineering Privacy Statement which allows automatic anonymized collection of usage data and email addresses in limited circumstances.
+7. Use of data collected by the software is subject to the Eric Lee Privacy Statement which allows automatic anonymized collection of usage data and email addresses in limited circumstances.
 8. The contract arising out of this agreement is governed by the laws and courts of the Vietnam Territory.</string>
          </property>
         </widget>

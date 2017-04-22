@@ -8,8 +8,8 @@ QT       += core gui
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-unix:TARGET = ../../bin/meshmagic3d
-win32:TARGET = ../../../dist/bin/meshmagic3d
+unix:TARGET = ../../bin/meshviewer
+win32:TARGET = ../../../dist/bin/meshviewer
 
 TEMPLATE = app
 

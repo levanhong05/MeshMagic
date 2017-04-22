@@ -1,6 +1,6 @@
 /********************************************************************************
-** Program:   Mesh Magic 3D v1.0.0
-** File:      MeshMagic3D.cpp
+** Program:   Mesh 3D Viewer v1.0.0
+** File:      MeshViewer.cpp
 **
 ** Created: Wed 06. May 08:16:00 2015
 **      by: Hong Le Van
@@ -194,8 +194,8 @@ MeshViewer::MeshViewer(QWidget *parent) :
     lastProperty = vtkProperty::New();
     isChangeInputFile = false;
     ui->actionAnaglyph->setEnabled(false);
-    ui->statusBar->showMessage(QString("Mesh Magic 3D v%1").arg(APP_VERSION_SHORT));
-    listLogInfo->addItem(tr("Welcome to Mesh Magic 3D !!!"));
+    ui->statusBar->showMessage(QString("Mesh Viewer v%1").arg(APP_VERSION_SHORT));
+    listLogInfo->addItem(tr("Welcome to Mesh 3D Viewer !!!"));
     QWidget::showMaximized();
 }
 
@@ -259,7 +259,7 @@ void MeshViewer::createConnerAnnotation()
     cornerAnnotation->SetNonlinearFontScaleFactor(1);
     cornerAnnotation->SetMaximumFontSize(10);
     cornerAnnotation->SetText(3, tr("Version ").toUtf8() + QString(APP_VERSION_SHORT).toUtf8());
-    cornerAnnotation->SetText(2, tr("Mesh Magic 3D").toUtf8());
+    cornerAnnotation->SetText(2, tr("Mesh Viewer").toUtf8());
     cornerAnnotation->GetTextProperty()->SetColor(1, 1, 1);
     renderer->AddViewProp(cornerAnnotation);
     renderer->ResetCamera();
@@ -937,7 +937,7 @@ void MeshViewer::slotClose()
     setButtonEnable(false);
     setExtrasActionEnable(false);
     nameFileInput = "";
-    listLogInfo->addItem(tr("Welcome to Mesh Magic 3D !!!"));
+    listLogInfo->addItem(tr("Welcome to Mesh 3D Viewer !!!"));
     actorSTL = NULL;
     lstActors.clear();
     lstLights.clear();
@@ -1657,7 +1657,7 @@ void MeshViewer::slotAnaglyph()
 void MeshViewer::slotScreenshot()
 {
     QString fileName = QFileDialog::getSaveFileName(this, tr("Save Screenshot"),
-                       QString("MeshMagic3D %1").arg(QDateTime::currentDateTime().toString("yyyy-MM-dd HH_mm_ss")),
+                       QString("MeshViewer %1").arg(QDateTime::currentDateTime().toString("yyyy-MM-dd HH_mm_ss")),
                        tr("JPEG File (*.jpg *jpeg);;PNG File (*.png)"));
 
     if (!fileName.isEmpty()) {
