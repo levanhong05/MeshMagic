@@ -173,29 +173,42 @@ MeshViewer::MeshViewer(QWidget *parent) :
     ui(new Ui::MeshViewer)
 {
     ui->setupUi(this);
+
     listLogInfo = new QListWidget;
     listLogInfo = new QListWidget(ui->centralWidget);
     listLogInfo->setObjectName(QString::fromUtf8("listLogInfo"));
+
     QSizePolicy sizePolicy1(QSizePolicy::Expanding, QSizePolicy::Fixed);
     sizePolicy1.setHorizontalStretch(0);
     sizePolicy1.setVerticalStretch(0);
     sizePolicy1.setHeightForWidth(listLogInfo->sizePolicy().hasHeightForWidth());
+
     listLogInfo->setSizePolicy(sizePolicy1);
     listLogInfo->setMaximumSize(QSize(16777215, 100));
+
     ui->mainLayout->addWidget(listLogInfo);
+
     initMesh();
+
     widgetAxesConner = vtkSmartPointer<vtkOrientationMarkerWidget>::New();
+
     createActions();
     createToolButtonMenu();
+
     setCheckActionDefault();
     setButtonEnable(false);
     setExtrasActionEnable(false);
     setStyleInteractionDefault();
+
     lastProperty = vtkProperty::New();
+
     isChangeInputFile = false;
+
     ui->actionAnaglyph->setEnabled(false);
     ui->statusBar->showMessage(QString("Mesh Viewer v%1").arg(APP_VERSION_SHORT));
+
     listLogInfo->addItem(tr("Welcome to Mesh 3D Viewer !!!"));
+
     QWidget::showMaximized();
 }
 
@@ -258,9 +271,11 @@ void MeshViewer::createConnerAnnotation()
     cornerAnnotation->SetLinearFontScaleFactor(2);
     cornerAnnotation->SetNonlinearFontScaleFactor(1);
     cornerAnnotation->SetMaximumFontSize(10);
+
     cornerAnnotation->SetText(3, tr("Version ").toUtf8() + QString(APP_VERSION_SHORT).toUtf8());
     cornerAnnotation->SetText(2, tr("Mesh Viewer").toUtf8());
     cornerAnnotation->GetTextProperty()->SetColor(1, 1, 1);
+
     renderer->AddViewProp(cornerAnnotation);
     renderer->ResetCamera();
 }
@@ -269,13 +284,14 @@ void MeshViewer::initMesh()
 {
     renderer = vtkSmartPointer<vtkRenderer>::New();
     // Setup the background gradient
-    //renderer->SetBackground(.2, .3, .4);
     renderer->GradientBackgroundOn();
-    renderer->SetBackground(0.9, 0.9, 0.9); //1,1,1
-    renderer->SetBackground2(0, 0.30196078431372549019607843137255, 0.6);
+    renderer->SetBackground(1.0, 1.0, 1.0);
+    renderer->SetBackground2(0.2745, 0.5529, 1.0);
+
     //Corner text
     createConnerAnnotation();
     renderer->ResetCamera();
+
     // VTK/Qt wedded
     ui->qvtkWidget->GetRenderWindow()->StereoCapableWindowOn();
     ui->qvtkWidget->GetRenderWindow()->StereoRenderOn();
@@ -290,29 +306,23 @@ void MeshViewer::showAxesCenter()
         vtkSmartPointer<vtkTransform> transform = vtkSmartPointer<vtkTransform>::New();
         transform->PostMultiply();
         transform->Translate(actorSTL->GetCenter()[0], actorSTL->GetCenter()[1], actorSTL->GetCenter()[2]);
-        //qDebug() << actorMain->GetCenter()[0] << "," << actorMain->GetCenter()[1] << "," <<  actorMain->GetCenter()[2];
+
         axesActor = vtkSmartPointer<vtkAxesActor>::New();
         axesActor->SetUserTransform(transform);
         axesActor->AxisLabelsOff();
+
         double l[3];
         l[0] = (actorSTL->GetBounds()[1] - actorSTL->GetBounds()[0]);
         l[1] = (actorSTL->GetBounds()[3] - actorSTL->GetBounds()[2]);
         l[2] = (actorSTL->GetBounds()[5] - actorSTL->GetBounds()[4]);
+
         axesActor->SetTotalLength(l);
         axesActor->SetConeRadius(0);
+
         // Add the actors to the scene
         //renderer->AddViewProp(axesActor);
         renderer->AddActor(axesActor);
-        /*double wc1[3];
-        double fp[3];
 
-        renderer->GetActiveCamera()->GetFocalPoint(fp);
-        renderer->GetActiveCamera()->GetPosition(wc1);
-
-        float distance = sqrt((wc1[0] - fp[0]) * (wc1[0] - fp[0]) + (wc1[1] - fp[1]) * (wc1[1] - fp[1]) + (wc1[2] - fp[2]) * (wc1[2] - fp[2]));
-
-        renderer->GetActiveCamera()->SetPosition(fp[0], fp[1], fp[2] + distance);
-        renderer->GetActiveCamera()->SetFocalPoint(actorSTL->GetCenter());*/
         ui->qvtkWidget->GetRenderWindow()->Render();
     }
 }
@@ -320,17 +330,22 @@ void MeshViewer::showAxesCenter()
 void MeshViewer::showAxesConner()
 {
     ui->qvtkWidget->GetRenderWindow()->AddRenderer(renderer);
+
     displayAxesConner(widgetAxesConner, ui->qvtkWidget->GetRenderWindow()->GetInteractor());
     renderer->ResetCamera();
+
     double wc1[3];
     double fp[3];
     renderer->GetActiveCamera()->GetFocalPoint(fp);
     renderer->GetActiveCamera()->GetPosition(wc1);
+
     float distance = sqrt((wc1[0] - fp[0]) * (wc1[0] - fp[0]) + (wc1[1] - fp[1]) * (wc1[1] - fp[1]) + (wc1[2] - fp[2]) * (wc1[2] - fp[2]));
     renderer->GetActiveCamera()->SetPosition(fp[0], fp[1], fp[2] + distance);
     renderer->GetActiveCamera()->SetFocalPoint(actorSTL->GetCenter());
+
     //set style
     setStyleInteractionDefault();
+
     //end set
     ui->qvtkWidget->render(this);
 }
@@ -341,9 +356,12 @@ void MeshViewer::displayAxesConner(vtkSmartPointer<vtkOrientationMarkerWidget> &
     axes->GetXAxisCaptionActor2D()->GetCaptionTextProperty()->SetColor(1, 0, 0);
     axes->GetYAxisCaptionActor2D()->GetCaptionTextProperty()->SetColor(0, 1, 0);
     axes->GetZAxisCaptionActor2D()->GetCaptionTextProperty()->SetColor(0, 0, 1);
+
     axes->SetShaftTypeToCylinder();
     axes->SetCylinderRadius(0.05);
+
     axes->PickableOff();
+
     widget->SetOutlineColor(0.9300, 0.5700, 0.1300);
     widget->SetOrientationMarker(axes);
     widget->SetInteractor(renderWindowInteractor);
@@ -394,17 +412,22 @@ void MeshViewer::createToolButtonMenu()
 {
     QMenu *menuAddObject = new QMenu(this);
     toolAddObject = new QToolButton(this);
+
     menuAddObject->addAction(ui->actionAddCube);
     menuAddObject->addAction(ui->actionAddSphere);
     menuAddObject->addAction(ui->actionAddIcosahedron);
     menuAddObject->addAction(ui->actionAddTorus);
+
     toolAddObject->setMenu(menuAddObject);
     toolAddObject->setDefaultAction(ui->actionAddCube);
     toolAddObject->setPopupMode(QToolButton::MenuButtonPopup);
+
     ui->editTool->insertWidget(ui->actionDeleteCell, toolAddObject);
     ui->editTool->insertSeparator(ui->actionDeleteCell);
+
     QMenu *menuSelect = new QMenu(this);
     toolSelect = new QToolButton(this);
+
     menuSelect->addAction(ui->actionSelectObject);
     menuSelect->addAction(ui->actionSelectCell);
     menuSelect->addAction(ui->actionSelectCellNeighbors);
@@ -412,9 +435,11 @@ void MeshViewer::createToolButtonMenu()
     menuSelect->addAction(ui->actionSelectLine);
     menuSelect->addAction(ui->actionSelectPoint);
     menuSelect->addAction(ui->actionSelectPointNeighbors);
+
     toolSelect->setMenu(menuSelect);
     toolSelect->setDefaultAction(ui->actionSelectObject);
     toolSelect->setPopupMode(QToolButton::MenuButtonPopup);
+
     ui->viewTool->insertWidget(ui->actionSolid, toolSelect);
     ui->viewTool->insertSeparator(ui->actionSolid);
 }
@@ -446,6 +471,7 @@ void MeshViewer::slotExit()
 {
     if (isChangeInputFile) {
         QString message = tr("Do you want to save your changes before quitting?");
+
         QMessageBox::StandardButton reply;
         reply = QMessageBox::warning(this, tr("Warning"),
                                      message,
@@ -470,6 +496,7 @@ void MeshViewer::slotExit()
     lstActors.clear();
     lstLights.clear();
     lstLightActors.clear();
+
     qApp->exit();
 }
 
