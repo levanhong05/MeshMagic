@@ -36,8 +36,7 @@
 #include "action/rotate.h"
 #include "action/extractionregion.h"
 
-namespace Ui
-{
+namespace Ui {
 class MeshViewer;
 }
 

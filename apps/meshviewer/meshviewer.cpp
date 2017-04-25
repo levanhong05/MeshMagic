@@ -158,6 +158,8 @@
 #include <vtkWindowToImageFilter.h>
 #include <vtkTransformTextureCoords.h>
 
+#include "console.h"
+
 vtkStandardNewMacro(InteractorStyleDeleteCell);
 vtkStandardNewMacro(KeyInteractorExtractRegions);
 vtkStandardNewMacro(MouseInteractorHighLightCell);
@@ -168,25 +170,15 @@ vtkStandardNewMacro(MouseInteractorHighLightTriangle);
 vtkStandardNewMacro(MouseInteractorHighLightCellNeighbors);
 vtkStandardNewMacro(MouseInteractorHighLightPointNeighbors);
 
+using namespace MeshViewer3D;
+
 MeshViewer::MeshViewer(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MeshViewer)
 {
     ui->setupUi(this);
 
-    listLogInfo = new QListWidget;
-    listLogInfo = new QListWidget(ui->centralWidget);
-    listLogInfo->setObjectName(QString::fromUtf8("listLogInfo"));
-
-    QSizePolicy sizePolicy1(QSizePolicy::Expanding, QSizePolicy::Fixed);
-    sizePolicy1.setHorizontalStretch(0);
-    sizePolicy1.setVerticalStretch(0);
-    sizePolicy1.setHeightForWidth(listLogInfo->sizePolicy().hasHeightForWidth());
-
-    listLogInfo->setSizePolicy(sizePolicy1);
-    listLogInfo->setMaximumSize(QSize(16777215, 100));
-
-    ui->mainLayout->addWidget(listLogInfo);
+    this->addDockWidget(Qt::BottomDockWidgetArea, console.dock());
 
     initMesh();
 
@@ -207,7 +199,7 @@ MeshViewer::MeshViewer(QWidget *parent) :
     ui->actionAnaglyph->setEnabled(false);
     ui->statusBar->showMessage(QString("Mesh Viewer v%1").arg(APP_VERSION_SHORT));
 
-    listLogInfo->addItem(tr("Welcome to Mesh 3D Viewer !!!"));
+    console.logInfo(tr("Welcome to Mesh 3D Viewer !!!"));
 
     QWidget::showMaximized();
 }
@@ -511,22 +503,22 @@ void MeshViewer::slotOpen()
     if (!nameFileInput.isEmpty()) {
         if (nameFileInput.endsWith(tr(".stl") , Qt::CaseInsensitive)) {
             strLog = QString("Reading model \"%1\"...").arg(nameFileInput.mid(nameFileInput.lastIndexOf("/") + 1));
-            listLogInfo->addItem(strLog);
+            console.logInfo(strLog);
             STLCore.STLReading(nameFileInput, 0);
             isChangeInputFile = false;
         } else if (nameFileInput.endsWith(tr(".ply") , Qt::CaseInsensitive)) {
             strLog = QString("Reading model \"%1\"...").arg(nameFileInput.mid(nameFileInput.lastIndexOf("/") + 1));
-            listLogInfo->addItem(strLog);
+            console.logInfo(strLog);
             STLCore.STLReading(nameFileInput, 1);
             isChangeInputFile = false;
         } else if (nameFileInput.endsWith(tr(".vtk") , Qt::CaseInsensitive)) {
             strLog = QString("Reading model \"%1\"...").arg(nameFileInput.mid(nameFileInput.lastIndexOf("/") + 1));
-            listLogInfo->addItem(strLog);
+            console.logInfo(strLog);
             STLCore.STLReading(nameFileInput, 2);
             isChangeInputFile = false;
         } else if (nameFileInput.endsWith(tr(".vtp") , Qt::CaseInsensitive)) {
             strLog = QString("Reading model \"%1\"...").arg(nameFileInput.mid(nameFileInput.lastIndexOf("/") + 1));
-            listLogInfo->addItem(strLog);
+            console.logInfo(strLog);
             STLCore.STLReading(nameFileInput, 3);
             isChangeInputFile = false;
         } else {
@@ -557,22 +549,22 @@ void MeshViewer::slotSave()
         if (reply == QMessageBox::Yes) {
             if (nameFileInput.endsWith(tr(".stl") , Qt::CaseInsensitive)) {
                 strLog = QString("Saving file \"%1\"...").arg(nameFileInput.mid(nameFileInput.lastIndexOf("/") + 1));
-                listLogInfo->addItem(strLog);
+                console.logInfo(strLog);
                 STLCore.STLSaving(lstActors, nameFileInput, 0, 0, 1);
                 isChangeInputFile = false;
             } else if (nameFileInput.endsWith(tr(".ply") , Qt::CaseInsensitive)) {
                 strLog = QString("Saving file \"%1\"...").arg(nameFileInput.mid(nameFileInput.lastIndexOf("/") + 1));
-                listLogInfo->addItem(strLog);
+                console.logInfo(strLog);
                 STLCore.STLSaving(lstActors, nameFileInput, 1, 0, 1);
                 isChangeInputFile = false;
             } else if (nameFileInput.endsWith(tr(".vtk") , Qt::CaseInsensitive)) {
                 strLog = QString("Saving file \"%1\"...").arg(nameFileInput.mid(nameFileInput.lastIndexOf("/") + 1));
-                listLogInfo->addItem(strLog);
+                console.logInfo(strLog);
                 STLCore.STLSaving(lstActors, nameFileInput, 2, 0, 1);
                 isChangeInputFile = false;
             } else if (nameFileInput.endsWith(tr(".vtp") , Qt::CaseInsensitive)) {
                 strLog = QString("Saving file \"%1\"...").arg(nameFileInput.mid(nameFileInput.lastIndexOf("/") + 1));
-                listLogInfo->addItem(strLog);
+                console.logInfo(strLog);
                 STLCore.STLSaving(lstActors, nameFileInput, 3, 0, 1);
                 isChangeInputFile = false;
             }
@@ -606,25 +598,25 @@ void MeshViewer::slotSaveAs()
 
         if (fileName.endsWith(tr(".stl") , Qt::CaseInsensitive)) {
             strLog = QString("Saving file \"%1\"...").arg(fileName.mid(fileName.lastIndexOf("/") + 1));
-            listLogInfo->addItem(strLog);
+            console.logInfo(strLog);
             STLCore.STLSaving(lstActors, fileName, 0, encodeType, 1);
             nameFileInput = fileName;
             isChangeInputFile = false;
         } else if (fileName.endsWith(tr(".ply") , Qt::CaseInsensitive)) {
             strLog = QString("Saving file \"%1\"...").arg(fileName.mid(fileName.lastIndexOf("/") + 1));
-            listLogInfo->addItem(strLog);
+            console.logInfo(strLog);
             STLCore.STLSaving(lstActors, fileName, 1, encodeType, 1);
             nameFileInput = fileName;
             isChangeInputFile = false;
         } else if (fileName.endsWith(tr(".vtk") , Qt::CaseInsensitive)) {
             strLog = QString("Saving file \"%1\"...").arg(fileName.mid(fileName.lastIndexOf("/") + 1));
-            listLogInfo->addItem(strLog);
+            console.logInfo(strLog);
             STLCore.STLSaving(lstActors, fileName, 2, encodeType, 1);
             nameFileInput = fileName;
             isChangeInputFile = false;
         } else if (fileName.endsWith(tr(".vtp") , Qt::CaseInsensitive)) {
             strLog = QString("Saving file \"%1\"...").arg(fileName.mid(fileName.lastIndexOf("/") + 1));
-            listLogInfo->addItem(strLog);
+            console.logInfo(strLog);
             STLCore.STLSaving(lstActors, fileName, 3, encodeType, 1);
             nameFileInput = fileName;
             isChangeInputFile = false;
@@ -726,7 +718,7 @@ void MeshViewer::slotAddShadow()
         l2->SetSwitch(1);
         lstLights.push_back(l2);
         //addShaderViewProps(renderer);
-        listLogInfo->addItem(tr("Add shader successful !!!"));
+        console.logInfo(tr("Add shader successful !!!"));
     } else {
         for (unsigned int i = 0; i < lstLights.size(); i++) {
             renderer->RemoveLight(lstLights[i]);
@@ -738,7 +730,7 @@ void MeshViewer::slotAddShadow()
 
         //ui->qvtkWidget->GetRenderWindow()->AddRenderer(renderer);
         //ui->qvtkWidget->GetRenderWindow()->Render();
-        listLogInfo->addItem(tr("Remove shader successful !!!"));
+        console.logInfo(tr("Remove shader successful !!!"));
     }
 
     renderer->ResetCamera();
@@ -765,17 +757,17 @@ void MeshViewer::slotAddLight()
             lightMain = light;
             renderer->AddLight(light);
             ui->qvtkWidget->GetRenderWindow()->Render();
-            listLogInfo->addItem(tr("Add light successful !!!"));
+            console.logInfo(tr("Add light successful !!!"));
         }
     } else {
         if (ui->actionAddLight->isChecked()) {
             renderer->AddLight(lightMain);
             ui->qvtkWidget->GetRenderWindow()->Render();
-            listLogInfo->addItem(tr("Add light successful !!!"));
+            console.logInfo(tr("Add light successful !!!"));
         } else {
             renderer->RemoveLight(lightMain);
             ui->qvtkWidget->GetRenderWindow()->Render();
-            listLogInfo->addItem(tr("Remove light successful !!!"));
+            console.logInfo(tr("Remove light successful !!!"));
         }
     }
 }
@@ -809,7 +801,7 @@ void MeshViewer::slotAddMaterial()
         actorSTL->SetTexture(texture);
         ui->qvtkWidget->GetRenderWindow()->Render();
         strLog = QString("Add texture \"%1\" successful !!!").arg(fileName.mid(fileName.lastIndexOf("/") + 1));
-        listLogInfo->addItem(strLog);
+        console.logInfo(strLog);
         imageReader->Delete();
     }
 }
@@ -828,7 +820,7 @@ void MeshViewer::slotColor()
         lastProperty->DeepCopy(actorSTL->GetProperty());
         ui->qvtkWidget->GetRenderWindow()->Render();
         strLog = QString("Color selected (R,G,B): (%1,%2,%3)").arg(color.red()).arg(color.green()).arg(color.blue());
-        listLogInfo->addItem(strLog);
+        console.logInfo(strLog);
     }
 }
 
@@ -837,7 +829,7 @@ void MeshViewer::slotShowRegion()
     if (ui->actionShowZones->isChecked()) {
         ui->actionDelaunay3D->setChecked(false);
         strLog = QString("The model is extracting region...");
-        listLogInfo->addItem(strLog);
+        console.logInfo(strLog);
         extractThread.ExtractRegion(actorSTL);
         //vtkSmartPointer<KeyInteractorExtractRegions> styleRegions = vtkSmartPointer<KeyInteractorExtractRegions>::New();
         //styleRegions->SetDefaultRenderer(renderer);
@@ -858,7 +850,7 @@ void MeshViewer::slotDelaunay3D()
 {
     if (ui->actionDelaunay3D->isChecked()) {
         strLog = QString("Generating color a mesh by heigh...");
-        listLogInfo->addItem(strLog);
+        console.logInfo(strLog);
 
         if (actorSTL) {
             renderer->RemoveAllViewProps();
@@ -914,7 +906,7 @@ void MeshViewer::slotDelaunay3D()
             renderer->AddActor(actor);
             renderer->AddActor2D(scalarBar);
             strLog = QString("Generate color a mesh by heigh finished !!!");
-            listLogInfo->addItem(strLog);
+            console.logInfo(strLog);
             outputPolyData->Delete();
         }
     } else {
@@ -923,7 +915,7 @@ void MeshViewer::slotDelaunay3D()
         createConnerAnnotation();
         renderer->AddActor(actorSTL);
         strLog = QString("Remove color a mesh by heigh finished !!!");
-        listLogInfo->addItem(strLog);
+        console.logInfo(strLog);
     }
 
     ui->qvtkWidget->GetRenderWindow()->Render();
@@ -960,11 +952,13 @@ void MeshViewer::slotClose()
     ui->qvtkWidget->GetRenderWindow()->Render();
     ui->actionWireFrame->setChecked(false);
     ui->actionSolid->setChecked(false);
-    listLogInfo->clear();
+
     setButtonEnable(false);
     setExtrasActionEnable(false);
     nameFileInput = "";
-    listLogInfo->addItem(tr("Welcome to Mesh 3D Viewer !!!"));
+
+    console.logInfo(tr("Welcome to Mesh 3D Viewer !!!"));
+
     actorSTL = NULL;
     lstActors.clear();
     lstLights.clear();
@@ -1078,7 +1072,7 @@ void MeshViewer::slotShowOutline()
             strLog = QString("Show model %1 as outline:\n").arg(i + 1);
             strLog += QString("    Bounds:\n        Xmin,Xmax: (%1, %2)\n        Ymin,Ymax: (%3, %4)\n        Zmin,Zmax: (%5, %6)")
                       .arg(bounds[0]).arg(bounds[1]).arg(bounds[2]).arg(bounds[3]).arg(bounds[4]).arg(bounds[5]);
-            listLogInfo->addItem(strLog);
+            console.logInfo(strLog);
         }
 
         renderer->ResetCamera();
@@ -1121,7 +1115,7 @@ void MeshViewer::slotShowEdges()
             strLog = QString("Show model %1 as edges:\n").arg(i + 1);
             strLog += QString("    There are %1 cells.\n").arg(lines->GetNumberOfCells());
             strLog += QString("    There are %1 points.").arg(points->GetNumberOfPoints());
-            listLogInfo->addItem(strLog);
+            console.logInfo(strLog);
             // Visualize the edges and Create a mapper and actor
             vtkSmartPointer<vtkPolyDataMapper> edgeMapper =  vtkSmartPointer<vtkPolyDataMapper>::New();
             edgeMapper->SetInputConnection(extractEdges->GetOutputPort());
@@ -1173,7 +1167,7 @@ void MeshViewer::slotShowPolygon()
             strLog = QString("Show model %1 as polygon:\n").arg(i + 1);
             strLog += QString("    Bounds:\n        Xmin,Xmax: (%1, %2)\n        Ymin,Ymax: (%3, %4)\n        Zmin,Zmax: (%5, %6)")
                       .arg(bounds[0]).arg(bounds[1]).arg(bounds[2]).arg(bounds[3]).arg(bounds[4]).arg(bounds[5]);
-            listLogInfo->addItem(strLog);
+            console.logInfo(strLog);
             vtkSmartPointer<vtkPlane> plane = vtkSmartPointer<vtkPlane>::New();
             plane->SetOrigin((bounds[1] + bounds[0]) / 2.0, (bounds[3] + bounds[2]) / 2.0, bounds[4]);
             plane->SetNormal(0, 0, 1);
@@ -1758,20 +1752,20 @@ void MeshViewer::slotReadSTLDone(vtkActor *actor)
     }
 
     ui->qvtkWidget->GetRenderWindow()->Render();
-    listLogInfo->addItem(tr("Read finished..."));
+    console.logInfo(tr("Read finished..."));
     numOfPoints = vtkPolyData::SafeDownCast(actorSTL->GetMapper()->GetInput())->GetNumberOfPoints();
     numOfCells = vtkPolyData::SafeDownCast(actorSTL->GetMapper()->GetInput())->GetNumberOfCells();
     strLog = QString("The model has %1 points.").arg(numOfPoints);
-    listLogInfo->addItem(strLog);
+    console.logInfo(strLog);
     strLog = QString("The model has %1 cells.").arg(numOfCells);
-    listLogInfo->addItem(strLog);
+    console.logInfo(strLog);
     ui->actionAnaglyph->setEnabled(true);
 }
 
 void MeshViewer::slotWriteSTLDone()
 {
     strLog = QString("Save successful !!!");
-    listLogInfo->addItem(strLog);
+    console.logInfo(strLog);
 }
 
 void MeshViewer::slotExtractDone(vtkActor *actor, unsigned int numRegions)
@@ -1782,11 +1776,11 @@ void MeshViewer::slotExtractDone(vtkActor *actor, unsigned int numRegions)
 
     if (numRegions == 1) {
         strLog = QString("The model has 1 region.");
-        listLogInfo->addItem(strLog);
+        console.logInfo(strLog);
         renderer->AddActor(actor);
     } else {
         strLog = QString("The model has %1 regions.").arg(numRegions);
-        listLogInfo->addItem(strLog);
+        console.logInfo(strLog);
         renderer->AddActor(actor);
     }
 }

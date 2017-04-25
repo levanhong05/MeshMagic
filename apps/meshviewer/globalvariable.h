@@ -49,7 +49,6 @@ QString nameFileInput;
 QToolButton *toolSelect;
 QToolButton *toolAddObject;
 QToolButton *toolView;
-QListWidget *listLogInfo;
 
 std::vector<vtkSmartPointer<vtkActor> > lstActors;
 std::vector<vtkSmartPointer<vtkLight> > lstLights;

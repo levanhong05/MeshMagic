@@ -66,9 +66,11 @@ public:
 
         if (picker->GetCellId() >= 0) {
             double *worldPosition = picker->GetPickPosition();
+
             strLog = QString("Selected cell id is: %1.\n").arg(picker->GetCellId());
             strLog = QString("Pick position is: (%1, %2, %3).").arg(worldPosition[0]).arg(worldPosition[1]).arg(worldPosition[2]);
-            listLogInfo->addItem(strLog);
+
+            console.logInfo(strLog);
 
             cellId = picker->GetCellId();
 

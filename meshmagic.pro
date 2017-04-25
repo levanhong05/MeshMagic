@@ -4,8 +4,6 @@ TEMPLATE = subdirs
 
 SUBDIRS += \
     3rdparty \
+    modules \
     apps
 
-RESOURCES += \
-    apps/meshmagic3d/MeshMagic3DResources.qrc \
-    apps/meshviewer/meshmagic3d_res.qrc

@@ -41,5 +41,17 @@
         <file>images/logo.png</file>
         <file>images/help.png</file>
         <file>images/viewer.png</file>
+        <file>images/light.svg</file>
+        <file>images/x-.png</file>
+        <file>images/x+.png</file>
+        <file>images/xyz2.png</file>
+        <file>images/y-.png</file>
+        <file>images/y+.png</file>
+        <file>images/z-.png</file>
+        <file>images/z+.png</file>
+        <file>images/zoom-fit-best.svg</file>
+        <file>images/zoom-in.svg</file>
+        <file>images/zoom-out.svg</file>
+        <file>images/camera.svg</file>
     </qresource>
 </RCC>

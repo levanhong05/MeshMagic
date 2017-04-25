@@ -36,8 +36,12 @@
 
 #include <list>
 
+#include "console.h"
+
 #define VTKISRBP_ORIENT 0
 #define VTKISRBP_SELECT 1
+
+using namespace MeshViewer3D;
 
 class MouseInteractorHighLightCell : public vtkInteractorStyleRubberBandPick
 {
@@ -97,7 +101,8 @@ public:
             }
 
             strLog = QString("Extracted %1 cells.").arg(numOfCells);
-            listLogInfo->addItem(strLog);
+
+            console.logInfo(strLog);
 
             #if VTK_MAJOR_VERSION <= 5
                 this->selectedMapper->SetInputConnection(extractPolyDataGeometry->GetOutputPort());

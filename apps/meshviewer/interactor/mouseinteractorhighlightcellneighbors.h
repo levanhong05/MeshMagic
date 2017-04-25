@@ -119,7 +119,7 @@ public:
             for (std::list<vtkIdType>::iterator it1 = neighbors.begin(); it1 != neighbors.end(); it1++) {
                 strLog += QString(" %1").arg(*it1);
             }
-            listLogInfo->addItem(strLog);
+            console.logInfo(strLog);
 
             // Create a dataset with the cell of interest
             {

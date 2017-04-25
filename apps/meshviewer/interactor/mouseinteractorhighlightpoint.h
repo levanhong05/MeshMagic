@@ -75,7 +75,7 @@ public:
             numOfPoints = selected->GetNumberOfPoints();
 
             strLog = QString("Selected %1 points.").arg(numOfPoints);
-            listLogInfo->addItem(strLog);
+            console.logInfo(strLog);
             //listLogInfo->scrollToBottom();
 
             #if VTK_MAJOR_VERSION <= 5

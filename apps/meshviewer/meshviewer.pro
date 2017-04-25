@@ -19,7 +19,9 @@ SOURCES +=  main.cpp\
             action/rotate.cpp \
             configurewriter.cpp \
             action/extractionregion.cpp \
-            meshviewer.cpp
+            meshviewer.cpp \
+    meshviewervtkwidget.cpp \
+    meshviewertabwidget.cpp
 
 HEADERS  += \
             about.h \
@@ -38,18 +40,34 @@ HEADERS  += \
             interactor/mouseinteractorhighlightcellneighbors.h \
             interactor/mouseinteractorhighlightpointneighbors.h \
             version.h \
-            meshviewer.h
+            meshviewer.h \
+    meshviewervtkwidget.h \
+    meshviewertabwidget.h
 
 FORMS    += \
             about.ui \
             configurewriter.ui \
-            meshviewer.ui
+            meshviewer.ui \
+    meshviewervtkwidget.ui \
+    meshviewertabwidget.ui
 
 RESOURCES += \
             meshviewer_res.qrc
 
 OTHER_FILES += \
     data/MeshMagic.pdf
+
+win32:LIBS += -L$$OUT_PWD/../../dist/bin/ -llogger
+unix:LIBS += -L$$OUT_PWD/../../modules/logger/ -llogger
+
+INCLUDEPATH += $$PWD/../../modules/logger
+DEPENDPATH += $$PWD/../../modules/logger
+
+unix:LIBS += -L$$OUT_PWD/../../modules/console -lconsole
+win32:LIBS += -L$$OUT_PWD/../../dist/bin -lconsole
+
+INCLUDEPATH += $$PWD/../../modules/console
+DEPENDPATH += $$PWD/../../modules/console
 
 # vtk6 lib install dir
 win32 {
