@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += gui widgets script scripttools
+QT       += gui widgets
 
 unix:TARGET = console
 win32:TARGET = ../../../dist/bin/console
